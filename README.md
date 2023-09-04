@@ -1,4 +1,5 @@
-### Hi there! My name is Jake Leya and this is my GitHub README page.
+### Hi there! My name is Jake Leya and this is my GitHub profile page.
+### I'm a musician with a lifelong interest in computer technology. I'm very excited to develop my skills through the Tech Elevator Bootcamp!
 
 <!--
 **jleya95/jleya95** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
