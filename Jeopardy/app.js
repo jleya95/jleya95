@@ -3,48 +3,72 @@ const scoreDisplay = document.getElementById('score');
 
 const categories = [
     {
-        genre: "WHO",
+        genre: 'WHO ARE YOU',
         questions: [
             {
-                question: "Who wrote Harry Potter?",
-                answers: ["JK Rowling", "JRR Tolkien"],
-                correct: "JK Rowling",
-                level: "easy"
+                question: 'Finish the lyric: "Hope I die before I get: "',
+                answers: ['What is "Old"?', 'What is "Killed"?'],
+                correct: 'What is "Old"?',
+                level: '200'
             },
             {
-                question: "Who wrote Harry Potter?",
-                answers: ["JK Rowling", "JRR Tolkien"],
-                correct: "JK Rowling",
-                level: "medium"
+                question: 'Principal songwriter for The Who',
+                answers: ['Who is Roger Daltrey?', 'Who is Pete Townshend?'],
+                correct: 'Who is Pete Townshend?',
+                level: '400'
             },
             {
-                question: "Who wrote Harry Potter?",
-                answers: ["JK Rowling", "JRR Tolkien"],
-                correct: "JK Rowling",
-                level: "hard"
+                question: 'The album Tommy is considered one of the first: ',
+                answers: ['What is Album Cycle?', 'What is Rock Opera?'],
+                correct: 'What is Rock Opera?',
+                level: '600'
+            },
+            {
+                question: "The first album recorded after Keith Moon's death",
+                answers: ["What is It's Hard?", 'What is Face Dances?'],
+                correct: 'What is Face Dances?',
+                level: "800"
+            },
+            {
+                question: 'Co-manager of The Who along with Chris Stamp',
+                answers: ['Who was Allen Klein?', 'Who was Kit Lambert?'],
+                correct: 'Who was Kit Lambert?',
+                level: '1000'
             }
         ]
     },
     {
-        genre: "WHAT",
+        genre: 'BLUE BEATLES',
         questions: [
             {
-                question: "Who wrote Harry Potter?",
+                question: "",
                 answers: ["JK Rowling", "JRR Tolkien"],
                 correct: "JK Rowling",
-                level: "easy"
+                level: "200"
             },
             {
                 question: "Who wrote Harry Potter?",
                 answers: ["JK Rowling", "JRR Tolkien"],
                 correct: "JK Rowling",
-                level: "medium"
+                level: "400"
             },
             {
                 question: "Who wrote Harry Potter?",
                 answers: ["JK Rowling", "JRR Tolkien"],
                 correct: "JK Rowling",
-                level: "hard"
+                level: "600"
+            },
+            {
+                question: "Who wrote Harry Potter?",
+                answers: ["JK Rowling", "JRR Tolkien"],
+                correct: "JK Rowling",
+                level: "800"
+            },
+            {
+                question: "Who wrote Harry Potter?",
+                answers: ["JK Rowling", "JRR Tolkien"],
+                correct: "JK Rowling",
+                level: "1000"
             }
         ]
     },
@@ -55,19 +79,31 @@ const categories = [
                 question: "Who wrote Harry Potter?",
                 answers: ["JK Rowling", "JRR Tolkien"],
                 correct: "JK Rowling",
-                level: "easy"
+                level: "200"
             },
             {
                 question: "Who wrote Harry Potter?",
                 answers: ["JK Rowling", "JRR Tolkien"],
                 correct: "JK Rowling",
-                level: "medium"
+                level: "400"
             },
             {
                 question: "Who wrote Harry Potter?",
                 answers: ["JK Rowling", "JRR Tolkien"],
                 correct: "JK Rowling",
-                level: "hard"
+                level: "600"
+            },
+            {
+                question: "Who wrote Harry Potter?",
+                answers: ["JK Rowling", "JRR Tolkien"],
+                correct: "JK Rowling",
+                level: "800"
+            },
+            {
+                question: "Who wrote Harry Potter?",
+                answers: ["JK Rowling", "JRR Tolkien"],
+                correct: "JK Rowling",
+                level: "1000"
             }
         ]
     },
@@ -78,19 +114,31 @@ const categories = [
                 question: "Who wrote Harry Potter?",
                 answers: ["JK Rowling", "JRR Tolkien"],
                 correct: "JK Rowling",
-                level: "easy"
+                level: "200"
             },
             {
                 question: "Who wrote Harry Potter?",
                 answers: ["JK Rowling", "JRR Tolkien"],
                 correct: "JK Rowling",
-                level: "medium"
+                level: "400"
             },
             {
                 question: "Who wrote Harry Potter?",
                 answers: ["JK Rowling", "JRR Tolkien"],
                 correct: "JK Rowling",
-                level: "hard"
+                level: "600"
+            },
+            {
+                question: "Who wrote Harry Potter?",
+                answers: ["JK Rowling", "JRR Tolkien"],
+                correct: "JK Rowling",
+                level: "800"
+            },
+            {
+                question: "Who wrote Harry Potter?",
+                answers: ["JK Rowling", "JRR Tolkien"],
+                correct: "JK Rowling",
+                level: "1000"
             }
         ]
     },
@@ -101,22 +149,70 @@ const categories = [
                 question: "Who wrote Harry Potter?",
                 answers: ["JK Rowling", "JRR Tolkien"],
                 correct: "JK Rowling",
-                level: "easy"
+                level: "200"
             },
             {
                 question: "Who wrote Harry Potter?",
                 answers: ["JK Rowling", "JRR Tolkien"],
                 correct: "JK Rowling",
-                level: "medium"
+                level: "400"
             },
             {
                 question: "Who wrote Harry Potter?",
                 answers: ["JK Rowling", "JRR Tolkien"],
                 correct: "JK Rowling",
-                level: "hard"
+                level: "600"
+            },
+            {
+                question: "Who wrote Harry Potter?",
+                answers: ["JK Rowling", "JRR Tolkien"],
+                correct: "JK Rowling",
+                level: "800"
+            },
+            {
+                question: "Who wrote Harry Potter?",
+                answers: ["JK Rowling", "JRR Tolkien"],
+                correct: "JK Rowling",
+                level: "1000"
+            }
+        ]
+    },
+    {
+        genre: "HOW",
+        questions: [
+            {
+                question: "Who wrote Harry Potter?",
+                answers: ["JK Rowling", "JRR Tolkien"],
+                correct: "JK Rowling",
+                level: "200"
+            },
+            {
+                question: "Who wrote Harry Potter?",
+                answers: ["JK Rowling", "JRR Tolkien"],
+                correct: "JK Rowling",
+                level: "400"
+            },
+            {
+                question: "Who wrote Harry Potter?",
+                answers: ["JK Rowling", "JRR Tolkien"],
+                correct: "JK Rowling",
+                level: "600"
+            },
+            {
+                question: "Who wrote Harry Potter?",
+                answers: ["JK Rowling", "JRR Tolkien"],
+                correct: "JK Rowling",
+                level: "800"
+            },
+            {
+                question: "Who wrote Harry Potter?",
+                answers: ["JK Rowling", "JRR Tolkien"],
+                correct: "JK Rowling",
+                level: "1000"
             }
         ]
     }
+
 
 ]
 
@@ -138,12 +234,16 @@ function addCategory(category) {
         card.classList.add('card');
         column.append(card);
 
-        if (question.level === 'easy') {
-            card.innerHTML = 100;
-        } else if (question.level === 'medium') {
+        if (question.level === '200') {
             card.innerHTML = 200;
-        } else if (question.level === 'hard') {
-            card.innerHTML = 300;
+        } else if (question.level === '400') {
+            card.innerHTML = 400;
+        } else if (question.level === '600') {
+            card.innerHTML = 600;
+        } else if (question.level === '800') {
+            card.innerHTML = 800;
+        } else if (question.level === '1000') {
+            card.innerHTML = 1000;
         }
 
         card.setAttribute('data-question', question.question);
@@ -198,7 +298,7 @@ function getResult() {
     } else {
         cardOfButton.classList.add('wrong-answer');
         setTimeout(() => {
-            while(cardOfButton.firstChild) {
+            while (cardOfButton.firstChild) {
                 cardOfButton.removeChild(cardOfButton.lastChild)
             }
             cardOfButton.innerHTML = 0;
