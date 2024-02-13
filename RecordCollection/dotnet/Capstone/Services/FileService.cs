@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System;
 using System.Reflection.Metadata.Ecma335;
+using Capstone.Models;
 
 namespace Capstone.Services
 {
@@ -19,7 +20,7 @@ namespace Capstone.Services
                     // the file is reached.
                     while ((line = sr.ReadLine()) != null)
                     {
-                        Console.WriteLine(line);
+                        MapLineToRecord(line);
                     }
                 }
                 return true;
@@ -31,6 +32,17 @@ namespace Capstone.Services
                 Console.WriteLine(e.Message);
             }
             return false;
+        }
+        public Record MapLineToRecord (string line)
+        {
+            Record record = new Record();
+            string[] lineElements = line.Split(',');
+
+            record.File = lineElements[0];
+            record.Artist = lineElements[1];
+            record.Title = lineElements[2];
+
+            return record;
         }
     }
 }
