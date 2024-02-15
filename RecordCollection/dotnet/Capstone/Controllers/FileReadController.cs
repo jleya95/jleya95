@@ -1,5 +1,7 @@
-﻿using Capstone.Services;
+﻿using Capstone.Models;
+using Capstone.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace Capstone.Controllers
 {
@@ -14,10 +16,10 @@ namespace Capstone.Controllers
         }
 
         [HttpGet]
-        public IActionResult ReadFile()
+        public ActionResult<List<Record>> GenerateListOfRecords()
         {
-            bool fileRead = fileService.ReadFile();
-            if (fileRead)
+            List<Record> fileRead = fileService.ReadFile();
+            if (fileRead.Count != 0)
             {
                 return Ok(fileRead);
             }

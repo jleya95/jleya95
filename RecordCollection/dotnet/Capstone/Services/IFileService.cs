@@ -1,9 +1,10 @@
 ﻿using Capstone.Models;
+using System.Collections.Generic;
 namespace Capstone.Services
 {
     public interface IFileService
     {
-        bool ReadFile();
+        List<Record> ReadFile();
         Record MapLineToRecord(string line);
     }
 }
