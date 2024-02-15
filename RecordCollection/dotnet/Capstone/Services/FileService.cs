@@ -13,7 +13,7 @@ namespace Capstone.Services
             int i = 0;
             List<Record> records = new List<Record>();
             Record newRecord = new Record();
-            List<string[]> irregulars = new List<string[]>();
+            List<string> irregulars = new List<string>();
             try
             {
                 using (StreamReader sr = new StreamReader("TextFile.txt"))
@@ -35,7 +35,7 @@ namespace Capstone.Services
                             }
                             else
                             {
-                                irregulars.Add(lineElements);
+                                irregulars.Add(line);
                             }
                         }
                     }
@@ -45,9 +45,18 @@ namespace Capstone.Services
             {
                 throw new DaoException("Error reading file", e);
             }
+
+            if (irregulars.Count > 0)
+            {
+                for (int j = 0; j < irregulars.Count; j++)
+                {
+                    records.Add(MapIrregularLineToRecord(irregulars[j]));
+                }
+            }
+
             return records;
         }
-        public Record MapLineToRecord(string[] lineElements)
+        private Record MapLineToRecord(string[] lineElements)
         {
             Record record = new Record();
 
@@ -76,6 +85,28 @@ namespace Capstone.Services
             record.Color = lineElements[9];
             record.Notes = lineElements[10];
             record.NeedleInfo = lineElements[11];
+            return record;
+        }
+
+        private Record MapIrregularLineToRecord(string irregularLine)
+        {
+            Record record = new Record();
+            string[] lineElements = new string[12];
+
+            string[] initialLineSplit = irregularLine.Split("\",");
+            for(int i = 0; i < initialLineSplit.Length; i++)
+            {
+                if (initialLineSplit[i].Contains("\""))
+                {
+                    string splitSubstring = initialLineSplit[i].Remove(0,1);
+                    lineElements[i] = splitSubstring;
+                } else
+                {
+                    string[] nextLineSplit = initialLineSplit[i].Split(',');
+                }
+            }
+
+
             return record;
         }
     }
