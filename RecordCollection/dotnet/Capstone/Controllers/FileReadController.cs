@@ -1,4 +1,5 @@
-﻿using Capstone.Models;
+﻿using Capstone.DAO;
+using Capstone.Models;
 using Capstone.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -10,18 +11,32 @@ namespace Capstone.Controllers
     public class FileReadController : ControllerBase
     {
         private readonly IFileService fileService;
-        public FileReadController(IFileService fileService)
+        private readonly IRecordDao recordDao;
+
+        public FileReadController(IFileService fileService, IRecordDao recordDao)
         {
             this.fileService = fileService;
+            this.recordDao = recordDao;
         }
 
         [HttpGet]
         public ActionResult<List<Record>> GenerateListOfRecords()
         {
-            List<Record> fileRead = fileService.ReadFile();
-            if (fileRead.Count != 0)
+            List<Record> listOfRecords = fileService.ReadFile();
+
+            for (int i = 0; i < listOfRecords.Count; i++)
             {
-                return Ok(fileRead);
+                bool recordExists = recordDao.GetRecordById(listOfRecords[i]);
+
+                if(!recordExists)
+                {
+                    bool recordAddedToDb = recordDao.AddRecordToDb(listOfRecords[i]);
+                }
+            }
+
+            if (listOfRecords.Count != 0)
+            {
+                return Ok(listOfRecords);
             }
             return BadRequest();
         }

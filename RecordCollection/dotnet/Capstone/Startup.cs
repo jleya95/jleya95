@@ -66,6 +66,7 @@ namespace Capstone
             services.AddSingleton<IPasswordHasher>(ph => new PasswordHasher());
             services.AddTransient<IUserDao>(m => new UserSqlDao(connectionString));
             services.AddTransient<IFileService>(m => new FileService());
+            services.AddTransient<IRecordDao>(m => new RecordSqlDao(connectionString));
 
             // Swagger set up
             services.AddSwaggerGen(s => {

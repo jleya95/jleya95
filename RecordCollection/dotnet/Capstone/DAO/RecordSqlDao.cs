@@ -1,4 +1,6 @@
 ﻿using Capstone.Models;
+using System;
+using System.Data.SqlClient;
 namespace Capstone.DAO
 {
     public class RecordSqlDao : IRecordDao
@@ -8,11 +10,76 @@ namespace Capstone.DAO
             connectionString = dbConnectionString;
         }
 
-        public Record AddRecordToDB(Record record)
+        public bool GetRecordById(Record record)
         {
-            Record recordToAdd = new Record();
+            string sql = "SELECT record_id, file_as, artist, title, release_year, record_label, issue_year, serial_number, pressing, disc_number, color, notes, needle_info " +
+                "FROM records " +
+                "WHERE serial_number = @serial_number";
 
-            return recordToAdd;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@serial_number", record.SerialNumber);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        return true;
+                    }
+                }
+
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+
+            return false;
+        }
+
+        public bool AddRecordToDb(Record record)
+        {
+            int recordId = 0;
+
+            string sql = "INSERT INTO records (file_as, artist, title, release_year, record_label, issue_year, serial_number, pressing, disc_number, color, notes, needle_info)" +
+                "OUTPUT INSERTED.record_id " +
+                "VALUES (@file_as, @artist, @title, @release_year, @record_label, @issue_year, @serial_number, @pressing, @disc_number, @color, @notes, @needle_info);";
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@file_as", record.File);
+                    cmd.Parameters.AddWithValue("@artist", record.Artist);
+                    cmd.Parameters.AddWithValue("@title", record.Title);
+                    cmd.Parameters.AddWithValue("@release_year", record.ReleaseYear);
+                    cmd.Parameters.AddWithValue("@record_label", record.Label);
+                    cmd.Parameters.AddWithValue("@issue_year", record.IssueYear);
+                    cmd.Parameters.AddWithValue("@serial_number", record.SerialNumber);
+                    cmd.Parameters.AddWithValue("@pressing", record.Pressing);
+                    cmd.Parameters.AddWithValue("@disc_number", record.DiscNumber);
+                    cmd.Parameters.AddWithValue("@color", record.Color);
+                    cmd.Parameters.AddWithValue("@notes", record.Notes);
+                    cmd.Parameters.AddWithValue("@needle_info", record.NeedleInfo);
+
+                    recordId = Convert.ToInt32(cmd.ExecuteScalar());
+                    return true;
+                }
+
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

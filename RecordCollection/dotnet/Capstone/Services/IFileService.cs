@@ -5,6 +5,6 @@ namespace Capstone.Services
     public interface IFileService
     {
         List<Record> ReadFile();
-        Record MapLineToRecord(string line);
+        Record MapLineToRecord(string[] lineElements);
     }
 }
