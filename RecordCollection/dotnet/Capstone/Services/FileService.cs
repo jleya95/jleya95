@@ -19,7 +19,7 @@ namespace Capstone.Services
                 using (StreamReader sr = new StreamReader("TextFile.txt"))
                 {
                     string line;
-                    while ((line = sr.ReadLine()) != null && i < 300)
+                    while ((line = sr.ReadLine()) != null && i < 734)
                     {
                         if (line != "FILE,ARTIST,TITLE,RELEASE YEAR,LABEL,ISSUE YEAR,SERIAL #,PRESSING,DISC #,COLOR,NOTES,NEEDLE: 2.0 / 1.5")
                         {
@@ -54,12 +54,12 @@ namespace Capstone.Services
             record.File = lineElements[0];
             record.Artist = lineElements[1];
             record.Title = lineElements[2];
-            if (lineElements[3] != "")
+            if (lineElements[3] != "" && lineElements[3].Length == 4)
             {
                 record.ReleaseYear = Int32.Parse(lineElements[3]);
             }
             record.Label = lineElements[4];
-            if (lineElements[5] != "")
+            if (lineElements[5] != "" && lineElements[5].Length == 4)
             {
                 record.IssueYear = Int32.Parse(lineElements[5]);
             }
@@ -79,4 +79,5 @@ namespace Capstone.Services
             return record;
         }
     }
+
 }

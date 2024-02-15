@@ -26,11 +26,11 @@ CREATE TABLE users (
 
 CREATE TABLE records (
 record_id int IDENTITY(1,1) NOT NULL,
-[file] nvarchar(max) NULL,
+file_as nvarchar(max) NULL,
 artist nvarchar(max) NULL,
 title nvarchar(max) NULL,
 release_year int NULL,
-[label] nvarchar(max) NULL,
+record_label nvarchar(max) NULL,
 issue_year int NULL,
 serial_number nvarchar(max) NULL,
 pressing nvarchar(max) NULL,
