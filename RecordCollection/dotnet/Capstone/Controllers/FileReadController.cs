@@ -26,7 +26,8 @@ namespace Capstone.Controllers
 
             for (int i = 0; i < listOfRecords.Count; i++)
             {
-                bool recordExists = recordDao.GetRecordBySerialNumber(listOfRecords[i]);
+/*                bool recordExists = recordDao.GetRecordBySerialNumber(listOfRecords[i]);
+*/                bool recordExists = recordDao.CheckRecordExistence(listOfRecords[i]);
 
                 if (!recordExists)
                 {

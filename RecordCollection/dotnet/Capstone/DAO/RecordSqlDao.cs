@@ -11,6 +11,36 @@ namespace Capstone.DAO
             connectionString = dbConnectionString;
         }
 
+        public bool CheckRecordExistence(Record record)
+        {
+            string sql = "SELECT record_id FROM records " +
+                "WHERE title = @title";
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@title", record.Title);
+                    cmd.Parameters.AddWithValue("@artist", record.Artist);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        return true;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            return false;
+        }
+
         // TODO fix when line has no Serial number
         public bool GetRecordBySerialNumber(Record record)
         {

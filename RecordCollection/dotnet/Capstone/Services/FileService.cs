@@ -50,7 +50,11 @@ namespace Capstone.Services
             {
                 for (int j = 0; j < irregulars.Count; j++)
                 {
-                    records.Add(MapIrregularLineToRecord(irregulars[j]));
+                    Record irregularRecord = MapIrregularLineToRecord(irregulars[j]);
+                    if(irregularRecord.Title != null)
+                    {
+                        records.Add(irregularRecord);
+                    }
                 }
             }
 
