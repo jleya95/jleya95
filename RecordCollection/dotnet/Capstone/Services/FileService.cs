@@ -93,16 +93,39 @@ namespace Capstone.Services
             Record record = new Record();
             string[] lineElements = new string[12];
 
-            string[] initialLineSplit = irregularLine.Split("\",");
-            for(int i = 0; i < initialLineSplit.Length; i++)
+            if (irregularLine.StartsWith("\""))
             {
-                if (initialLineSplit[i].Contains("\""))
+                string[] initialLineSplit = irregularLine.Split("\",");
+                for (int i = 0; i < initialLineSplit.Length; i++)
                 {
-                    string splitSubstring = initialLineSplit[i].Remove(0,1);
-                    lineElements[i] = splitSubstring;
-                } else
+                    if (initialLineSplit[i].Contains("\""))
+                    {
+                        string splitSubstring = initialLineSplit[i].Remove(0, 1);
+                        lineElements[i] = splitSubstring;
+                    }
+                    else
+                    {
+                        int l = i;
+                        string[] nextLineSplit = initialLineSplit[i].Split(',');
+                        for (int k = 0; k < nextLineSplit.Length; k++)
+                        {
+                            lineElements[l] = nextLineSplit[k];
+                            l += 1;
+                        }
+                    }
+                }
+
+                bool hasNullElements = true;
+                foreach (string lineElement in lineElements)
                 {
-                    string[] nextLineSplit = initialLineSplit[i].Split(',');
+                    if (lineElement == null)
+                    {
+                        hasNullElements = false;
+                    }
+                }
+                if (hasNullElements) {
+
+                    record = MapLineToRecord(lineElements);
                 }
             }
 

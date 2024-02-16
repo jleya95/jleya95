@@ -6,38 +6,74 @@ namespace Capstone.DAO
     public class RecordSqlDao : IRecordDao
     {
         private readonly string connectionString;
-        public RecordSqlDao(string dbConnectionString) {
+        public RecordSqlDao(string dbConnectionString)
+        {
             connectionString = dbConnectionString;
         }
 
-        public bool GetRecordById(Record record)
+        // TODO fix when line has no Serial number
+        public bool GetRecordBySerialNumber(Record record)
         {
-            string sql = "SELECT record_id, file_as, artist, title, release_year, record_label, issue_year, serial_number, pressing, disc_number, color, notes, needle_info " +
-                "FROM records " +
-                "WHERE serial_number = @serial_number";
-
-            try
+            if (record.SerialNumber == "" || record.SerialNumber == null)
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                string sql = "SELECT record_id, file_as, artist, title, release_year, record_label, issue_year, serial_number, pressing, disc_number, color, notes, needle_info " +
+                "FROM records " +
+                "WHERE title = @title AND artist = @artist";
+
+                try
                 {
-                    conn.Open();
-
-                    SqlCommand cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@serial_number", record.SerialNumber);
-                    SqlDataReader reader = cmd.ExecuteReader();
-
-                    if (reader.Read())
+                    using (SqlConnection conn = new SqlConnection(connectionString))
                     {
-                        return true;
+                        conn.Open();
+
+                        SqlCommand cmd = new SqlCommand(sql, conn);
+                        cmd.Parameters.AddWithValue("@title", record.Title);
+                        cmd.Parameters.AddWithValue("@artist", record.Artist);
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        if (reader.Read())
+                        {
+                            return true;
+                        }
                     }
+
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+            else
+            {
+                string sql = "SELECT record_id, file_as, artist, title, release_year, record_label, issue_year, serial_number, pressing, disc_number, color, notes, needle_info " +
+    "FROM records " +
+    "WHERE serial_number = @serial_number";
+
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(connectionString))
+                    {
+                        conn.Open();
+
+                        SqlCommand cmd = new SqlCommand(sql, conn);
+                        cmd.Parameters.AddWithValue("@serial_number", record.SerialNumber);
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        if (reader.Read())
+                        {
+                            return true;
+                        }
+                    }
+                }
+                catch (System.Exception)
+                {
+
+                    throw;
                 }
 
             }
-            catch (System.Exception)
-            {
 
-                throw;
-            }
 
             return false;
         }
