@@ -118,20 +118,6 @@ namespace Capstone.Services
                         }
                     }
                 }
-
-                bool hasNullElements = true;
-                foreach (string lineElement in lineElements)
-                {
-                    if (lineElement == null)
-                    {
-                        hasNullElements = false;
-                    }
-                }
-                if (hasNullElements)
-                {
-
-                    record = MapLineToRecord(lineElements);
-                }
             }
             else
             {
@@ -150,18 +136,42 @@ namespace Capstone.Services
                     }
                     else
                     {
+                        int l = i + 1;
                         string[] thirdLineSplit = initialLineSplit[i].Split("\"");
                         for (int k = 0; (k < thirdLineSplit.Length); k++)
                         {
                             if (thirdLineSplit[k].StartsWith(','))
                             {
-                                string[] fourthLineSplit = thirdLineSplit[k].Split(",");
+                                string commaSplitSubstring = thirdLineSplit[k].Substring(1);
+                                string[] fourthLineSplit = commaSplitSubstring.Split(",");
+                                for(int m = 0;  m < fourthLineSplit.Length && l < lineElements.Length ; m++)
+                                {
+                                        lineElements[l] = fourthLineSplit[m];
+                                        l++;
+                                }
 
+                            } else
+                            {
+                                lineElements[l] = thirdLineSplit[k];
+                                l++;
                             }
                         }
 
                     }
                 }
+            }
+
+            bool hasNullElements = true;
+            foreach (string lineElement in lineElements)
+            {
+                if (lineElement == null)
+                {
+                    hasNullElements = false;
+                }
+            }
+            if (hasNullElements)
+            {
+                record = MapLineToRecord(lineElements);
             }
 
 
