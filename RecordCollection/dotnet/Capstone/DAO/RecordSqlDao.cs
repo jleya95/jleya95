@@ -1,5 +1,6 @@
 ﻿using Capstone.Models;
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 namespace Capstone.DAO
 {
@@ -24,7 +25,6 @@ namespace Capstone.DAO
 
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@title", record.Title);
-                    cmd.Parameters.AddWithValue("@artist", record.Artist);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     if (reader.Read())
@@ -146,6 +146,53 @@ namespace Capstone.DAO
 
                 throw;
             }
+        }
+
+        public List<Record> GetAllRecords()
+        {
+            List<Record> records = new List<Record>();
+
+            string sql = "SELECT * from records ORDER BY file_as";
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Record recordToAdd = new Record();
+
+                        recordToAdd.Id = Convert.ToInt32(reader["record_id"]);
+                        recordToAdd.File = Convert.ToString(reader["file_as"]);
+                        recordToAdd.Artist = Convert.ToString(reader["artist"]);
+                        recordToAdd.Title = Convert.ToString(reader["title"]);
+                        recordToAdd.ReleaseYear = Convert.ToInt32(reader["release_year"]);
+                        recordToAdd.Label = Convert.ToString(reader["record_label"]);
+                        recordToAdd.IssueYear = Convert.ToInt32(reader["issue_year"]);
+                        recordToAdd.SerialNumber = Convert.ToString(reader["serial_number"]);
+                        recordToAdd.Pressing = Convert.ToString(reader["pressing"]);
+                        recordToAdd.DiscNumber = Convert.ToInt32(reader["disc_number"]);
+                        recordToAdd.Color = Convert.ToString(reader["color"]);
+                        recordToAdd.Notes = Convert.ToString(reader["notes"]);
+                        recordToAdd.NeedleInfo = Convert.ToString(reader["needle_info"]);
+
+                        records.Add(recordToAdd);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+            return records;
         }
     }
 }

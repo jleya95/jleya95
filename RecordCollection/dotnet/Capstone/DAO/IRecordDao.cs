@@ -1,4 +1,5 @@
 ﻿using Capstone.Models;
+using System.Collections.Generic;
 
 namespace Capstone.DAO
 {
@@ -8,5 +9,7 @@ namespace Capstone.DAO
 
         bool GetRecordBySerialNumber(Record record);
         bool AddRecordToDb(Record record);
+        List<Record> GetAllRecords();
+
     }
 }
