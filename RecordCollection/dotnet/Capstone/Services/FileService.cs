@@ -51,7 +51,7 @@ namespace Capstone.Services
                 for (int j = 0; j < irregulars.Count; j++)
                 {
                     Record irregularRecord = MapIrregularLineToRecord(irregulars[j]);
-                    if(irregularRecord.Title != null)
+                    if (irregularRecord.Title != null)
                     {
                         records.Add(irregularRecord);
                     }
@@ -127,9 +127,40 @@ namespace Capstone.Services
                         hasNullElements = false;
                     }
                 }
-                if (hasNullElements) {
+                if (hasNullElements)
+                {
 
                     record = MapLineToRecord(lineElements);
+                }
+            }
+            else
+            {
+                string[] initialLineSplit = irregularLine.Split(",\"");
+                for (int i = 0; i < initialLineSplit.Length; i++)
+                {
+                    if (!initialLineSplit[i].Contains("\""))
+                    {
+                        int l = i;
+                        string[] nextLineSplit = initialLineSplit[i].Split(',');
+                        for (int k = 0; k < nextLineSplit.Length; k++)
+                        {
+                            lineElements[l] = nextLineSplit[k];
+                            l += 1;
+                        }
+                    }
+                    else
+                    {
+                        string[] thirdLineSplit = initialLineSplit[i].Split("\"");
+                        for (int k = 0; (k < thirdLineSplit.Length); k++)
+                        {
+                            if (thirdLineSplit[k].StartsWith(','))
+                            {
+                                string[] fourthLineSplit = thirdLineSplit[k].Split(",");
+
+                            }
+                        }
+
+                    }
                 }
             }
 
