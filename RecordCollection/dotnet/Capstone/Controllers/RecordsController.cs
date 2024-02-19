@@ -25,14 +25,14 @@ namespace Capstone.Controllers
             return records;
         }
 
-        [HttpGet("{id}")]
+/*        [HttpGet("{id}")]
         public ActionResult<Record> GetRecordById(int id)
         {
             Record record = new Record();
 
             return record;
         }
-
+*/
         [HttpGet("random")]
         public ActionResult<Record> GetRandomRecord()
         {
@@ -42,6 +42,41 @@ namespace Capstone.Controllers
             Record randomRecord = records[randomIndex];
             
             return randomRecord;
+        }
+
+        [HttpPost("add")]
+        public ActionResult<Record> AddRecord(string fileAs, string artist, string title, int releaseYear, string recordLabel, int issueYear, string serialNumber, string pressing, int discNumber, string color, string notes, string needleInfo)
+        {
+            Record recordToAdd = new Record();
+            recordToAdd.File = fileAs;
+            recordToAdd.Artist = artist;
+            recordToAdd.Title = title;
+            recordToAdd.ReleaseYear = releaseYear;
+            recordToAdd.Label = recordLabel;
+            recordToAdd.IssueYear = issueYear;
+            recordToAdd.SerialNumber = serialNumber;
+            recordToAdd.Pressing = pressing;
+            recordToAdd.DiscNumber = discNumber;
+            recordToAdd.Color = color;
+            recordToAdd.Notes = notes;
+            recordToAdd.NeedleInfo = needleInfo;
+
+            bool recordExists = recordDao.CheckRecordExistence(recordToAdd);
+            bool recordAdded;
+
+            if(!recordExists)
+            {
+                recordAdded = recordDao.AddRecordToDb(recordToAdd);
+                if(recordAdded)
+                {
+                    return Ok(recordToAdd);
+                } else
+                {
+                    return BadRequest("There was a problem adding record");
+                }
+            }
+
+            return BadRequest("Record already exists in database");
         }
     }
 }
