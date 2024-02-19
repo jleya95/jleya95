@@ -25,14 +25,14 @@ namespace Capstone.Controllers
             return records;
         }
 
-/*        [HttpGet("{id}")]
-        public ActionResult<Record> GetRecordById(int id)
-        {
-            Record record = new Record();
+        /*        [HttpGet("{id}")]
+                public ActionResult<Record> GetRecordById(int id)
+                {
+                    Record record = new Record();
 
-            return record;
-        }
-*/
+                    return record;
+                }
+        */
         [HttpGet("random")]
         public ActionResult<Record> GetRandomRecord()
         {
@@ -40,7 +40,7 @@ namespace Capstone.Controllers
             Random random = new Random();
             int randomIndex = random.Next(0, records.Count);
             Record randomRecord = records[randomIndex];
-            
+
             return randomRecord;
         }
 
@@ -52,25 +52,66 @@ namespace Capstone.Controllers
             recordToAdd.Artist = artist;
             recordToAdd.Title = title;
             recordToAdd.ReleaseYear = releaseYear;
-            recordToAdd.Label = recordLabel;
+            if (recordLabel != null)
+            {
+                recordToAdd.Label = recordLabel;
+            }
+            else
+            {
+                recordToAdd.Label = "";
+            }
             recordToAdd.IssueYear = issueYear;
-            recordToAdd.SerialNumber = serialNumber;
-            recordToAdd.Pressing = pressing;
+            if (serialNumber != null)
+            {
+                recordToAdd.SerialNumber = serialNumber;
+            }
+            else
+            {
+                recordToAdd.SerialNumber = "";
+            }
+            if (pressing != null)
+            {
+                recordToAdd.Pressing = pressing;
+            }
+            else
+            {
+                recordToAdd.Pressing = "";
+            }
             recordToAdd.DiscNumber = discNumber;
-            recordToAdd.Color = color;
-            recordToAdd.Notes = notes;
+            if (color != null)
+            {
+                recordToAdd.Color = color;
+            }
+            else
+            {
+                recordToAdd.Color = "";
+            }
+            if (notes != null)
+            {
+                recordToAdd.Notes = notes;
+            } else
+            {
+                recordToAdd.Notes = "";
+            }
+            if(needleInfo != null)
+            {
             recordToAdd.NeedleInfo = needleInfo;
+            } else
+            {
+                recordToAdd.NeedleInfo = "";
+            }
 
             bool recordExists = recordDao.CheckRecordExistence(recordToAdd);
             bool recordAdded;
 
-            if(!recordExists)
+            if (!recordExists)
             {
                 recordAdded = recordDao.AddRecordToDb(recordToAdd);
-                if(recordAdded)
+                if (recordAdded)
                 {
                     return Ok(recordToAdd);
-                } else
+                }
+                else
                 {
                     return BadRequest("There was a problem adding record");
                 }
