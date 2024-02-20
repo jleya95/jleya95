@@ -15,7 +15,7 @@ namespace Capstone.DAO
         public bool CheckRecordExistence(Record record)
         {
             string sql = "SELECT record_id FROM records " +
-                "WHERE title = @title";
+                "WHERE title = @title AND artist = @artist AND serial_number = @serial_number";
 
             try
             {
@@ -25,6 +25,8 @@ namespace Capstone.DAO
 
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@title", record.Title);
+                    cmd.Parameters.AddWithValue("@artist", record.Artist);
+                    cmd.Parameters.AddWithValue("@serial_number", record.SerialNumber);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     if (reader.Read())
