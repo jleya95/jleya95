@@ -1,11 +1,14 @@
 <template>
-  <div class="home">
-    <h1>Home</h1>
-    <p>You must be authenticated to see this</p>
-  </div>
+  <home-component></home-component>
 </template>
 
 <script>
+import HomeComponent from '@/components/HomeComponent.vue';
+
 export default {
-};
+  components: {
+    HomeComponent
+  }
+}
+;
 </script>
