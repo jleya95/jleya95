@@ -152,7 +152,7 @@ namespace Capstone.DAO
         {
             List<Record> records = new List<Record>();
 
-            string sql = "SELECT * from records ORDER BY file_as";
+            string sql = "SELECT * from records ORDER BY file_as, release_year";
 
             try
             {
