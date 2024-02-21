@@ -1,6 +1,8 @@
 <template>
     <div class="random-record">
-        <p>{{ record.artist }}  "{{ record.title }}"  {{ record.releaseYear }} {{ record.label }} {{ record.issueYear }}</p>
+        <p>{{ record.artist }} | <span id="record-title">{{ record.title }}</span> | {{ record.releaseYear }} | {{ record.label }} | 
+            {{ record.issueYear }} | {{ record.serialNumber }} | {{ record.needleInfo }}
+        </p>
         <button @click="refreshPage()">Go Again</button>    
     </div>
 </template>
@@ -45,3 +47,9 @@ export default {
     }
 }
 </script>
+
+<style>
+#record-title {
+    font-style: italic;
+}
+</style>

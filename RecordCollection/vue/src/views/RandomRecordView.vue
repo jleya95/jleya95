@@ -1,4 +1,5 @@
 <template>
+    <h1 class="header">Random Record</h1>
     <random-record-component></random-record-component>
 </template>
 

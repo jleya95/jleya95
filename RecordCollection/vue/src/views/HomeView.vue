@@ -1,4 +1,5 @@
 <template>
+  <h1 class="header">Record Collection</h1>
   <home-component></home-component>
 </template>
 
@@ -12,3 +13,10 @@ export default {
 }
 ;
 </script>
+
+<style>
+.header {
+  font-size: 110%;
+  font-weight: bold;
+}
+</style>
