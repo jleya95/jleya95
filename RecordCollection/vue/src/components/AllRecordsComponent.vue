@@ -1,8 +1,11 @@
 <template>
     <div class="list">
         <ul class="records">
-            <li v-for="item in items" :key="item">{{ item.artist }} | {{ item.title }} | {{ item.releaseYear }} |
-                {{ item.label }} | {{ item.issueYear }} | {{ item.serialNumber }}</li>
+            <li v-for="item in items" :key="item">{{ item.artist }} | <span class="record-title">{{ item.title }}</span> |
+                <span id="release" v-if="item.releaseYear != 0">{{ item.releaseYear }}</span> <span v-else>n/a</span> |
+                {{ item.label }} | <span v-if="item.issueYear != 0">{{ item.issueYear }}</span> <span v-else>n/a</span> |
+                {{ item.serialNumber }}
+            </li>
         </ul>
     </div>
 </template>
