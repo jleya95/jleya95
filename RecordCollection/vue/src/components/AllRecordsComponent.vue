@@ -1,7 +1,9 @@
 <template>
-    <table>Testing</table>
-    <div>
-        <p>{{ listOfRecords }}</p>
+    <div class="list">
+        <ul class="records">
+            <li v-for="item in items" :key="item">{{ item.artist }} | {{ item.title }} | {{ item.releaseYear }} |
+                {{ item.label }} | {{ item.issueYear }} | {{ item.serialNumber }}</li>
+        </ul>
     </div>
 </template>
 
@@ -11,17 +13,17 @@ import RecordsService from '../services/RecordsService';
 export default {
     data() {
         return {
-            listOfRecords: []
+            items: []
         }
     },
     methods: {
         getAllRecords() {
             RecordsService.getAllRecords()
-            .then ((response) => {
-                if (response.status === 200) {
-                    this.listOfRecords = response.data
-                }
-            })
+                .then((response) => {
+                    if (response.status === 200) {
+                        this.items = response.data
+                    }
+                })
         }
     },
     created() {
@@ -29,3 +31,9 @@ export default {
     }
 }
 </script>
+
+<style>
+.list {
+    margin-left: 4px;
+}
+</style>

@@ -18,5 +18,6 @@ export default {
 .header {
   font-size: 110%;
   font-weight: bold;
+  margin-left: 4px;
 }
 </style>

@@ -99,12 +99,22 @@ namespace Capstone.Controllers
             record.File = lineElements[0];
             record.Artist = lineElements[1];
             record.Title = lineElements[2];
-            if (lineElements[3] != "" && lineElements[3].Length == 4)
+            /*            if (lineElements[3] != "" && lineElements[3].Length == 4)
+                        {
+                            record.ReleaseYear = Int32.Parse(lineElements[3]);
+                        }
+            */
+            if (lineElements[3] != "")
             {
                 record.ReleaseYear = Int32.Parse(lineElements[3]);
             }
             record.Label = lineElements[4];
-            if (lineElements[5] != "" && lineElements[5].Length == 4)
+            /*            if (lineElements[5] != "" && lineElements[5].Length == 4)
+                        {
+                            record.IssueYear = Int32.Parse(lineElements[5]);
+                        }
+            */
+            if (lineElements[5] != "")
             {
                 record.IssueYear = Int32.Parse(lineElements[5]);
             }

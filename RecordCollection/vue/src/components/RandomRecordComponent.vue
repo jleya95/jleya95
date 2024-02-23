@@ -52,4 +52,8 @@ export default {
 #record-title {
     font-style: italic;
 }
+
+.random-record {
+    margin-left: 4px;
+}
 </style>

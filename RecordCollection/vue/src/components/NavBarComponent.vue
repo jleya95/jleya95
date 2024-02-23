@@ -8,3 +8,9 @@
 </template>
 
 <script></script>
+
+<style>
+#nav {
+    margin-left: 4px;
+}
+</style>

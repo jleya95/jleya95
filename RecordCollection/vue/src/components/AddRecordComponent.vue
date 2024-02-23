@@ -131,4 +131,8 @@ width: 3%
     display: flex;
     flex-direction: row;
 }
+
+.add-form {
+    margin-left: 4px;
+}
 </style>
