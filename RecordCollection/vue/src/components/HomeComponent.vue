@@ -1,7 +1,6 @@
 <template>
     <div class="home">
       <button @click="randomPagePush()">Random</button>
-      <button>All</button>
     </div>
   </template>
   

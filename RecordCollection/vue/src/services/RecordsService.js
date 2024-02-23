@@ -9,5 +9,8 @@ export default {
         &releaseYear=${recordData.releaseYear}&recordLabel=${recordData.label}&issueYear=${recordData.issueYear}
         &serialNumber=${recordData.serialNumber}&pressing=${recordData.pressing}&discNumber=${recordData.discNumber}
         &color=${recordData.color}&notes=${recordData.notes}&needleInfo=${recordData.needleInfo}`)
+    },
+    getAllRecords() {
+        return axios.get('/Records')
     }
 }
