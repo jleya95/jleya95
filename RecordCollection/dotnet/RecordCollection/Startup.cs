@@ -11,6 +11,7 @@ using Capstone.DAO;
 using Capstone.Security;
 using Microsoft.OpenApi.Models;
 using Capstone.Services;
+using RecordCollection.Services;
 
 namespace Capstone
 {
@@ -67,6 +68,7 @@ namespace Capstone
             services.AddTransient<IUserDao>(m => new UserSqlDao(connectionString));
             services.AddTransient<IFileService>(m => new FileService());
             services.AddTransient<IRecordDao>(m => new RecordSqlDao(connectionString));
+            services.AddTransient<IRecordService>(m=> new RecordService());
 
             // Swagger set up
             services.AddSwaggerGen(s => {
