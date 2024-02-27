@@ -1,14 +1,19 @@
 <template>
+    <div class="album-art" v-if="imgPath !=''">
+        <img src={{ imgPath }} >
+    </div>
     <div class="random-record">
-        <p>{{ record.artist }} | <span class="record-title">{{ record.title }}</span> | {{ record.releaseYear }} | {{ record.label }} | 
+        <p>{{ record.artist }} | <span class="record-title">{{ record.title }}</span> | {{ record.releaseYear }} | {{
+            record.label }} |
             {{ record.issueYear }} | {{ record.serialNumber }} | {{ record.needleInfo }}
         </p>
-        <button @click="refreshPage()">Go Again</button>    
+        <button @click="refreshPage()">Go Again</button>
     </div>
 </template>
 
 <script>
 import RecordsService from '@/services/RecordsService.js'
+import APIService from '../services/APIService'
 
 export default {
     data() {
@@ -28,14 +33,22 @@ export default {
             //     notes: "",
             //     needleInfo: ""
             // }
-            record: []
+            record: [],
+            imgPath: ''
         }
     },
     methods: {
         getRandomRecord() {
             RecordsService.getRandomRecord()
+                .then(response => {
+                    this.record = response.data
+                    this.getAlbumArt(this.record)
+                })
+        },
+        getAlbumArt(record) {
+            APIService.searchDiscogsForRecord(record)
             .then(response => {
-                this.record = response.data
+                this.imgPath = response.data
             })
         },
         refreshPage() {

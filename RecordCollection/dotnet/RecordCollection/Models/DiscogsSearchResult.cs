@@ -5,6 +5,7 @@ namespace RecordCollection.Models
 {
     public class DiscogsSearchResult
     {
+        [JsonIgnore]
         public Pagination Pagination { get; set; }
         public List<Result> Results { get; set; } = new List<Result>();
     }

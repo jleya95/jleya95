@@ -42,6 +42,15 @@ namespace RecordCollection.Services
             return response;
         }
 
+        public CoverArt GetCoverArtFromDiscogs(int id)
+        {
+            RestRequest restRequest = new RestRequest(options.BaseUrl + $"releases/{id}");
+
+            CoverArt coverArt = client.Get<CoverArt>(restRequest);
+
+            return coverArt;
+        }
+
         public DiscogsSearchRequest GenerateDiscogsSearchObject(string title, string artist, string label, string serial, string releaseYear, string issueYear)
         {
             DiscogsSearchRequest request = new DiscogsSearchRequest();

@@ -1,10 +1,6 @@
-﻿using Capstone.DAO;
-using Capstone.Models;
-using Capstone.Services;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using RecordCollection.Models;
 using RecordCollection.Services;
-using System.Collections.Generic;
 
 namespace RecordCollection.Controllers
 {
@@ -20,11 +16,18 @@ namespace RecordCollection.Controllers
         }
 
         [HttpGet("search")]
-        public ActionResult<DiscogsSearchResult> SearchDiscogsForRecord(string title, string artist, string label, string serial, string releaseYear, string issueYear)
+        public ActionResult<string> SearchDiscogsForRecord(string title, string artist, string label, string serial, string releaseYear, string issueYear)
         {
             DiscogsSearchRequest request = recordService.GenerateDiscogsSearchObject(title, artist, label, serial, releaseYear, issueYear);
             DiscogsSearchResult searchResults = recordService.SearchDiscogsForRecord(request);
-            return Ok(searchResults);
+            if (searchResults != null && searchResults.Results[0] != null)
+            {
+                CoverArt coverArt = recordService.GetCoverArtFromDiscogs(searchResults.Results[0].Id);
+                return Ok(coverArt.Images[0].Uri);
+            } else
+            {
+                return BadRequest();
+            }
         }
 
     }
