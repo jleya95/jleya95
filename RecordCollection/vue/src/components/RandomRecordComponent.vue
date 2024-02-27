@@ -1,11 +1,13 @@
 <template>
-    <div class="album-art" v-if="imgPath !=''">
-        <img src={{ imgPath }} >
+    <div class="album-art">
+        <img :src="this.imgPath" v-if="imgPath != ''">
     </div>
     <div class="random-record">
         <p>{{ record.artist }} | <span class="record-title">{{ record.title }}</span> | {{ record.releaseYear }} | {{
-            record.label }} |
-            {{ record.issueYear }} | {{ record.serialNumber }} | {{ record.needleInfo }}
+            record.label }} <span v-if="record.issueYear != ''">|
+                {{ record.issueYear }}</span> | {{ record.serialNumber }} <span v-if="record.needleInfo != ''">| {{
+                    record.needleInfo
+                }}</span>
         </p>
         <button @click="refreshPage()">Go Again</button>
     </div>
@@ -18,21 +20,6 @@ import APIService from '../services/APIService'
 export default {
     data() {
         return {
-            // record: {
-            //     id: 0,
-            //     file: "",
-            //     artist: "",
-            //     title: "",
-            //     releaseYear: 0,
-            //     label: "",
-            //     issueYear: 0,
-            //     serialNumber: "",
-            //     pressing: "",
-            //     discNumber: 0,
-            //     color: "",
-            //     notes: "",
-            //     needleInfo: ""
-            // }
             record: [],
             imgPath: ''
         }
@@ -47,9 +34,9 @@ export default {
         },
         getAlbumArt(record) {
             APIService.searchDiscogsForRecord(record)
-            .then(response => {
-                this.imgPath = response.data
-            })
+                .then(response => {
+                    this.imgPath = response.data
+                })
         },
         refreshPage() {
             location.reload();
@@ -67,6 +54,10 @@ export default {
 }
 
 .random-record {
+    margin-left: 4px;
+}
+
+.album-art {
     margin-left: 4px;
 }
 </style>

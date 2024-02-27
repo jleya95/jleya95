@@ -14,6 +14,7 @@ namespace RecordCollection.Models
         [JsonIgnore]
         public int Discogs_Id { get; set; }
         public string Uri { get; set; }
+        public string Resource_Url { get; set; }
         public int Height { get; set; }
         public int Width { get; set; }
     }
