@@ -32,13 +32,13 @@ namespace RecordCollection.Models
         public List<string> Barcode { get; set; } = new List<string>();
         public UserData UserData { get; set; }
         public int MasterId { get; set; }
-        public string MasterUrl { get; set; }
+        public string Master_Url { get; set; }
         public string Uri { get; set; }
         public string Catno { get; set; } // Category Number
         public string Title { get; set; }
         public string Thumb { get; set; }
         public string CoverImage { get; set; }
-        public string ResourceUrl { get; set; }
+        public string Resource_Url { get; set; }
         public Community Community { get; set; }
     }
 
