@@ -13,6 +13,7 @@ namespace RecordCollection.Models
         public int Image_Id { get; set; }
         [JsonIgnore]
         public int Discogs_Id { get; set; }
+        public string Type { get; set; }
         public string Uri { get; set; }
         public string Resource_Url { get; set; }
         public int Height { get; set; }

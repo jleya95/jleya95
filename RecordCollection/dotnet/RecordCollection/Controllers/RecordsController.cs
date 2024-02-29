@@ -25,6 +25,14 @@ namespace Capstone.Controllers
             return records;
         }
 
+        [HttpGet("{artist}/{title}")]
+        public ActionResult<Record> GetRecord(string title, string artist, string label, string serial, string releaseYear, string issueYear)
+        {
+            Record record = new Record();
+
+            return record;
+        }
+
         /*        [HttpGet("{id}")]
                 public ActionResult<Record> GetRecordById(int id)
                 {

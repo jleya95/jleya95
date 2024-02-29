@@ -44,7 +44,7 @@ namespace RecordCollection.Services
 
         public CoverArt GetCoverArtFromDiscogs(int id)
         {
-            RestRequest restRequest = new RestRequest(options.BaseUrl + $"releases/{id}");
+            RestRequest restRequest = new RestRequest(options.BaseUrl + $"masters/{id}");
 
             CoverArt coverArt = client.Get<CoverArt>(restRequest);
 
