@@ -1,7 +1,4 @@
 <template>
-    <div class="album-art">
-        <img :src="this.imgPath" v-if="imgPath != ''">
-    </div>
     <div class="single-record">
         <p>{{ record.artist }} | <span class="record-title">{{ record.title }}</span> | {{ record.releaseYear }} | {{
             record.label }} <span v-if="record.issueYear != ''">|
@@ -9,6 +6,9 @@
                     record.needleInfo
                 }}</span>
         </p>
+    </div>
+    <div class="album-art">
+        <img :src="this.imgPath" v-if="imgPath != ''">
     </div>
 </template>
 
@@ -40,3 +40,9 @@ export default {
     }
 }
 </script>
+
+<style>
+.single-record {
+    margin-left: 4px;
+}
+</style>

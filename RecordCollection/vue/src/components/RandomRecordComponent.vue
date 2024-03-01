@@ -1,7 +1,4 @@
 <template>
-    <div class="album-art">
-        <img :src="this.imgPath" v-if="imgPath != ''">
-    </div>
     <div class="random-record">
         <p>{{ record.artist }} | <span class="record-title">{{ record.title }}</span> | {{ record.releaseYear }} | {{
             record.label }} <span v-if="record.issueYear != ''">|
@@ -10,6 +7,10 @@
                 }}</span>
         </p>
         <button @click="refreshPage()">Go Again</button>
+    </div>
+
+    <div class="album-art">
+        <img :src="this.imgPath" v-if="imgPath != ''">
     </div>
 </template>
 
@@ -59,5 +60,6 @@ export default {
 
 .album-art {
     margin-left: 4px;
+    margin-top: 4px;
 }
 </style>
