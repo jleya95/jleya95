@@ -43,71 +43,51 @@ namespace Capstone.DAO
             return false;
         }
 
-        // TODO fix when line has no Serial number
-        public bool GetRecordBySerialNumber(Record record)
+        public Record GetRecord(string title, string artist, string serial, string releaseYear, string issueYear)
         {
-            if (record.SerialNumber == "" || record.SerialNumber == null)
+            Record recordToAdd = new Record();
+            string sql = "SELECT * FROM records WHERE title=@title AND artist=@artist AND serial_number=@serial " +
+                "AND release_year=@releaseYear AND issue_year = @issueYear";
+
+            try
             {
-                string sql = "SELECT record_id, file_as, artist, title, release_year, record_label, issue_year, serial_number, pressing, disc_number, color, notes, needle_info " +
-                "FROM records " +
-                "WHERE title = @title AND artist = @artist";
-
-                try
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    using (SqlConnection conn = new SqlConnection(connectionString))
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@title", title);
+                    cmd.Parameters.AddWithValue("@artist", artist);
+                    cmd.Parameters.AddWithValue("@serial", serial);
+                    cmd.Parameters.AddWithValue("@releaseYear", releaseYear);
+                    cmd.Parameters.AddWithValue("@issueYear", issueYear);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
                     {
-                        conn.Open();
-
-                        SqlCommand cmd = new SqlCommand(sql, conn);
-                        cmd.Parameters.AddWithValue("@title", record.Title);
-                        cmd.Parameters.AddWithValue("@artist", record.Artist);
-                        SqlDataReader reader = cmd.ExecuteReader();
-
-                        if (reader.Read())
-                        {
-                            return true;
-                        }
+                        recordToAdd.Id = Convert.ToInt32(reader["record_id"]);
+                        recordToAdd.File = Convert.ToString(reader["file_as"]);
+                        recordToAdd.Artist = Convert.ToString(reader["artist"]);
+                        recordToAdd.Title = Convert.ToString(reader["title"]);
+                        recordToAdd.ReleaseYear = Convert.ToInt32(reader["release_year"]);
+                        recordToAdd.Label = Convert.ToString(reader["record_label"]);
+                        recordToAdd.IssueYear = Convert.ToInt32(reader["issue_year"]);
+                        recordToAdd.SerialNumber = Convert.ToString(reader["serial_number"]);
+                        recordToAdd.Pressing = Convert.ToString(reader["pressing"]);
+                        recordToAdd.DiscNumber = Convert.ToInt32(reader["disc_number"]);
+                        recordToAdd.Color = Convert.ToString(reader["color"]);
+                        recordToAdd.Notes = Convert.ToString(reader["notes"]);
+                        recordToAdd.NeedleInfo = Convert.ToString(reader["needle_info"]);
                     }
+                    return recordToAdd;
 
-                }
-                catch (Exception)
-                {
-
-                    throw;
                 }
             }
-            else
+            catch (Exception)
             {
-                string sql = "SELECT record_id, file_as, artist, title, release_year, record_label, issue_year, serial_number, pressing, disc_number, color, notes, needle_info " +
-    "FROM records " +
-    "WHERE serial_number = @serial_number";
 
-                try
-                {
-                    using (SqlConnection conn = new SqlConnection(connectionString))
-                    {
-                        conn.Open();
-
-                        SqlCommand cmd = new SqlCommand(sql, conn);
-                        cmd.Parameters.AddWithValue("@serial_number", record.SerialNumber);
-                        SqlDataReader reader = cmd.ExecuteReader();
-
-                        if (reader.Read())
-                        {
-                            return true;
-                        }
-                    }
-                }
-                catch (System.Exception)
-                {
-
-                    throw;
-                }
-
+                throw;
             }
-
-
-            return false;
         }
 
         public bool AddRecordToDb(Record record)
@@ -196,5 +176,6 @@ namespace Capstone.DAO
 
             return records;
         }
+
     }
 }

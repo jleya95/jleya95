@@ -77,7 +77,7 @@ const routes = [
     }
   },
   {
-    path: "/single",
+    path: "/records/:artist/:title",
     name: "SingleRecord",
     component: SingleRecordView,
     meta: {

@@ -26,9 +26,9 @@ namespace Capstone.Controllers
         }
 
         [HttpGet("{artist}/{title}")]
-        public ActionResult<Record> GetRecord(string title, string artist, string label, string serial, string releaseYear, string issueYear)
+        public ActionResult<Record> GetRecord(string title, string artist, string serial, string releaseYear, string issueYear)
         {
-            Record record = new Record();
+            Record record = recordDao.GetRecord(title, artist, serial, releaseYear, issueYear);
 
             return record;
         }

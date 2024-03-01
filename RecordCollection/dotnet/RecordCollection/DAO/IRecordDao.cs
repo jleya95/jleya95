@@ -6,8 +6,8 @@ namespace Capstone.DAO
     public interface IRecordDao
     {
         bool CheckRecordExistence(Record record);
+        Record GetRecord(string title, string artist, string serial, string releaseYear, string issueYear);
 
-        bool GetRecordBySerialNumber(Record record);
         bool AddRecordToDb(Record record);
         List<Record> GetAllRecords();
 

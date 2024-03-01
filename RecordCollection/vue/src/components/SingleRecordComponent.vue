@@ -1,5 +1,5 @@
 <template>
-    <!-- <div class="album-art">
+    <div class="album-art">
         <img :src="this.imgPath" v-if="imgPath != ''">
     </div>
     <div class="single-record">
@@ -9,8 +9,7 @@
                     record.needleInfo
                 }}</span>
         </p>
-    </div> -->
-    <h2>hi</h2>
+    </div>
 </template>
 
 <script>
@@ -23,6 +22,21 @@ export default {
             record: [],
             imgPath: ''
         }
+    },
+    methods: {
+        getAlbumArt(record) {
+            APIService.searchDiscogsForRecord(record)
+                .then(response => {
+                    this.imgPath = response.data
+                })
+        },
+        setRecord() {
+            this.record = this.$store.state.currentRecord
+        }
+    },
+    created() {
+        this.setRecord();
+        this.getAlbumArt(this.record)
     }
 }
 </script>

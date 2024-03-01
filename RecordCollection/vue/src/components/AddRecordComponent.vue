@@ -53,13 +53,20 @@
                 <button class="add-button" @click="addRecord">Add</button>
             </div>
         </form>
+        <div class="popup" v-if="showPopUp">
+            <add-record-pop-up-component></add-record-pop-up-component>
+        </div>
     </div>
 </template>
 
 <script>
 import RecordsService from '../services/RecordsService.js'
+import AddRecordPopUpComponent from './AddRecordPopUpComponent.vue'
 
 export default {
+    components: {
+        AddRecordPopUpComponent
+    },
     data() {
         return {
             record: {
@@ -76,15 +83,17 @@ export default {
                 color: "",
                 notes: "",
                 needleInfo: ""
-            }
+            },
+            showPopUp: false,
         }
     },
     methods: {
-        addRecord() {
+        addRecord(e) {
+            e.preventDefault();
             RecordsService.addRecord(this.record)
                 .then((response) => {
                     if (response.status === 200) {
-                        return true;
+                        this.showPopUp = true
                     }
                 })
                 .catch((error) => {
@@ -110,7 +119,7 @@ export default {
 
 <style>
 .add-button {
-width: 3%
+    width: 3%
 }
 
 .form-body {

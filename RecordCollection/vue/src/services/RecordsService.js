@@ -12,5 +12,8 @@ export default {
     },
     getAllRecords() {
         return axios.get('/Records')
+    },
+    getSingleRecord(record) {
+        return axios.get(`/Records/${record.artist}/${record.title}?serial=${record.serialNumber}&releaseYear=${record.releaseYear}&issueYear=${record.issueYear}`)
     }
 }
