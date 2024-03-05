@@ -45,9 +45,7 @@ export default {
 
     },
     created() {
-        if (this.$store.state.records == []) {
-            this.getAllRecords();
-        }
+        this.getAllRecords();
         this.getRecordsFromStore();
     }
 }

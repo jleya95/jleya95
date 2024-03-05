@@ -1,4 +1,5 @@
 ﻿using Capstone.Models;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -58,7 +59,14 @@ namespace Capstone.DAO
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@title", title);
                     cmd.Parameters.AddWithValue("@artist", artist);
-                    cmd.Parameters.AddWithValue("@serial", serial);
+                    if (!serial.IsNullOrEmpty())
+                    {
+                        cmd.Parameters.AddWithValue("@serial", serial);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@serial", "");
+                    }
                     cmd.Parameters.AddWithValue("@releaseYear", releaseYear);
                     cmd.Parameters.AddWithValue("@issueYear", issueYear);
                     SqlDataReader reader = cmd.ExecuteReader();

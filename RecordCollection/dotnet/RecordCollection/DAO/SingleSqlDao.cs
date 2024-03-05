@@ -95,7 +95,7 @@ namespace RecordCollection.DAO
         {
             int singleId = 0;
 
-            string sql = "INSERT INTO single (file_as, artist, title, release_year, record_label, issue_year, serial_number, pressing, color, notes) " +
+            string sql = "INSERT INTO singles (file_as, artist, title, release_year, record_label, issue_year, serial_number, pressing, color, notes) " +
                 "OUTPUT INSERTED.single_id " +
                 "VALUES (@file_as, @artist, @title, @release_year, @record_label, @issue_year, @serial_number, @pressing, @color, @notes);";
 
