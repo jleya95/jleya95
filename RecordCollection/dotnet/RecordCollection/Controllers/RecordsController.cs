@@ -8,7 +8,6 @@ namespace Capstone.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-
     public class RecordsController : ControllerBase
     {
         private readonly IRecordDao recordDao;
