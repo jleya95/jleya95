@@ -1,19 +1,20 @@
 <template>
-    <div class="single-single">
+    <div class="random-single">
         <p>{{ single.artist }} | <span class="record-title">{{ single.title }}</span> | {{ single.releaseYear }} | {{
             single.label }} <span v-if="single.issueYear != ''">|
-                {{ single.issueYear }}</span> | {{ single.serialNumber }} <span v-if="single.needleInfo != ''">| {{
-            single.needleInfo
-        }}</span>
+                {{ single.issueYear }}</span> | {{ single.serialNumber }}
         </p>
+        <button @click="refreshPage()">Go Again</button>
     </div>
+
     <div class="single-art">
         <img :src="this.imgPath" v-if="imgPath != ''">
     </div>
 </template>
 
 <script>
-import APIService from '../services/APIService';
+import SinglesService from '@/services/SinglesService.js'
+import APIService from '../services/APIService'
 
 export default {
     data() {
@@ -23,27 +24,41 @@ export default {
         }
     },
     methods: {
-        getSingleArt(single) {
+        getRandomSingle() {
+            SinglesService.getRandomSingle()
+                .then(response => {
+                    this.single = response.data
+                    this.getAlbumArt(this.single)
+                })
+        },
+        getAlbumArt(single) {
             APIService.searchDiscogsForRecord(single)
                 .then(response => {
                     this.imgPath = response.data
                 })
         },
-        setSingle() {
-            this.single = this.$store.state.currentSingle
+        refreshPage() {
+            location.reload();
         }
     },
     created() {
-        this.setSingle();
-        this.getSingleArt(this.single)
+        this.getRandomSingle();
     }
 }
 </script>
 
 <style>
-.single-single,
+.record-title {
+    font-style: italic;
+}
+
+.random-single {
+    margin-left: 4px;
+}
+
 .single-art {
     margin-left: 4px;
-    margin-top: 4px
+    margin-top: 4px;
 }
+
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <button @click="randomPagePush()">Random</button>
-    <button @click="randomSinglePagePush()">Random Single</button>
+    <button class="home-button" @click="randomPagePush()">Random</button>
+    <button class="home-button" @click="randomSinglePagePush()">Random Single</button>
   </div>
 </template>
   
@@ -34,5 +34,8 @@ export default {
 <style>
 .home {
   margin-left: 4px;
+}
+.home-button {
+  margin-right: 4px
 }
 </style>
