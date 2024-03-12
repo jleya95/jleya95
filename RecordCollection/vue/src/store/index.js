@@ -7,6 +7,7 @@ export function createStore(currentToken, currentUser) {
       token: currentToken || '',
       user: currentUser || {},
       currentRecord: [],
+      currentSingle: [],
       records: [],
       singles: []
     },
@@ -29,6 +30,9 @@ export function createStore(currentToken, currentUser) {
       },
       GET_RECORD(state, record) {
         state.currentRecord = record
+      },
+      GET_SINGLE(state, single) {
+        state.currentSingle = single
       },
       GET_LIST_OF_RECORDS(state, recordsList) {
         state.records = recordsList
