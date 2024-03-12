@@ -7,7 +7,8 @@ export function createStore(currentToken, currentUser) {
       token: currentToken || '',
       user: currentUser || {},
       currentRecord: [],
-      records: []
+      records: [],
+      singles: []
     },
     mutations: {
       SET_AUTH_TOKEN(state, token) {
@@ -31,6 +32,9 @@ export function createStore(currentToken, currentUser) {
       },
       GET_LIST_OF_RECORDS(state, recordsList) {
         state.records = recordsList
+      },
+      GET_LIST_OF_SINGLES(state, singlesList) {
+        state.singles = singlesList
       }
     },
   });

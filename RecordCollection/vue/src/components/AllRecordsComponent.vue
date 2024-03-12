@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { routerKey } from 'vue-router';
+// import { routerKey } from 'vue-router';
 import RecordsService from '../services/RecordsService';
 
 export default {
@@ -27,12 +27,13 @@ export default {
                 .then((response) => {
                     if (response.status === 200) {
                         this.$store.commit("GET_LIST_OF_RECORDS", response.data)
+                        this.items = this.$store.state.records
                     }
                 })
         },
-        getRecordsFromStore() {
-            this.items = this.$store.state.records
-        },
+        // getRecordsFromStore() {
+        //     this.items = this.$store.state.records
+        // },
         goToRecordPage(item) {
             RecordsService.getSingleRecord(item)
                 .then((response) => {
@@ -46,7 +47,7 @@ export default {
     },
     created() {
         this.getAllRecords();
-        this.getRecordsFromStore();
+        // this.getRecordsFromStore();
     }
 }
 </script>

@@ -12,18 +12,18 @@ export default {
     randomPagePush() {
       return this.$router.push({ name: "RandomRecord" })
     },
-    getAllRecords() {
-      RecordsService.getAllRecords()
-        .then((response) => {
-          if (response.status === 200) {
-            this.$store.commit("GET_LIST_OF_RECORDS", response.data)
-          }
-        })
-    }
+    // getAllRecords() {
+    //   RecordsService.getAllRecords()
+    //     .then((response) => {
+    //       if (response.status === 200) {
+    //         this.$store.commit("GET_LIST_OF_RECORDS", response.data)
+    //       }
+    //     })
+    // }
   },
-  created() {
-    this.getAllRecords();
-  }
+  // created() {
+  //   this.getAllRecords();
+  // }
 };
 </script>
   
