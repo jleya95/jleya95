@@ -11,6 +11,7 @@ import AddRecordView from '../views/AddRecordView.vue';
 import AllRecordsView from '../views/AllRecordsView.vue';
 import SingleRecordView from '../views/SingleRecordView.vue';
 import SingleSingleView from '../views/SingleSingleView.vue';
+import RandomSingleView from '../views/RandomSingleView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -57,6 +58,14 @@ const routes = [
     path: "/records/random",
     name: "RandomRecord",
     component: RandomRecordView,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/singles/random",
+    name: "RandomSingle",
+    component: RandomSingleView,
     meta: {
       requiresAuth: false
     }

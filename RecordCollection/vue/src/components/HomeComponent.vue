@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <button @click="randomPagePush()">Random</button>
+    <button @click="randomSinglePagePush()">Random Single</button>
   </div>
 </template>
   
@@ -12,6 +13,9 @@ export default {
     randomPagePush() {
       return this.$router.push({ name: "RandomRecord" })
     },
+    randomSinglePagePush() {
+      return this.$router.push({ name: "RandomSingle"})
+    }
     // getAllRecords() {
     //   RecordsService.getAllRecords()
     //     .then((response) => {
