@@ -102,14 +102,14 @@ const routes = [
       requiresAuth: false
     }
   },
-  {
-    path: "/singles/:artist/:title",
-    name: "SingleSingle",
-    component: SingleSingleView,
-    meta: {
-      requiresAuth: false
-    }
-  },
+  // {
+  //   path: "/singles/:artist/:title",
+  //   name: "SingleSingle",
+  //   component: SingleSingleView,
+  //   meta: {
+  //     requiresAuth: false
+  //   }
+  // },
   {
     path: "/singles/single",
     name: "SingleSingle1",
