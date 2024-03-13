@@ -33,11 +33,11 @@ export default {
                 })
         },
         goToSinglePage(item) {
-            SinglesService.getSingleRecord(item)
+            SinglesService.getSingleSingle1(item)
                 .then((response) => {
                     if (response.status === 200) {
                         this.$store.commit('GET_SINGLE', item)
-                        return this.$router.push(`/Singles/${item.artist}/${item.title}`)
+                        return this.$router.push(`/Singles/Single`)
                     }
                 })
         }

@@ -13,10 +13,11 @@ export default {
         &serialNumber=${singleData.serialNumber}&pressing=${singleData.pressing}&
         color=${singleData.color}&notes=${singleData.notes}`)
     },
-    getSingleRecord(record) {
-        return axios.get(`/Records/${record.artist}/${record.title}?serial=${record.serialNumber}&releaseYear=${record.releaseYear}&issueYear=${record.issueYear}`)
-    },
     getSingleSingle(single) {
         return axios.get(`/Singles/${single.artist}/${single.title}?serial=${single.serialNumber}&releaseYear=${single.releaseYear}&issueYear=${single.issueYear}`)
+    },
+    getSingleSingle1(single) {
+        return axios.get(`/Singles/Single?artist=${single.artist}&title=${single.title}&serial=${single.serialNumber}&releaseYear=${single.releaseYear}&issueYear=${single.issueYear}`)
     }
+
 }

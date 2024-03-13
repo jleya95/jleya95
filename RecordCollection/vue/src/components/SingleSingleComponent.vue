@@ -2,9 +2,7 @@
     <div class="single-single">
         <p>{{ single.artist }} | <span class="record-title">{{ single.title }}</span> | {{ single.releaseYear }} | {{
             single.label }} <span v-if="single.issueYear != ''">|
-                {{ single.issueYear }}</span> | {{ single.serialNumber }} <span v-if="single.needleInfo != ''">| {{
-            single.needleInfo
-        }}</span>
+                {{ single.issueYear }}</span> | {{ single.serialNumber }}
         </p>
     </div>
     <div class="single-art">

@@ -36,11 +36,11 @@ export default {
         //     this.items = this.$store.state.records
         // },
         goToRecordPage(item) {
-            RecordsService.getSingleRecord(item)
+            RecordsService.getSingleRecord1(item)
                 .then((response) => {
                     if (response.status === 200) {
                         this.$store.commit('GET_RECORD', item)
-                        return this.$router.push(`/Records/${item.artist}/${item.title}`)
+                        return this.$router.push(`/Records/record`)
                     }
                 })
         },

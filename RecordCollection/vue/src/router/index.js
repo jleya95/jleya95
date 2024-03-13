@@ -86,9 +86,17 @@ const routes = [
       requiresAuth: false,
     }
   },
+  // {
+  //   path: "/records/:artist/:title",
+  //   name: "SingleRecord",
+  //   component: SingleRecordView,
+  //   meta: {
+  //     requiresAuth: false
+  //   }
+  // },
   {
-    path: "/records/:artist/:title",
-    name: "SingleRecord",
+    path: "/records/record",
+    name: "SingleRecord1",
     component: SingleRecordView,
     meta: {
       requiresAuth: false
@@ -97,6 +105,14 @@ const routes = [
   {
     path: "/singles/:artist/:title",
     name: "SingleSingle",
+    component: SingleSingleView,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/singles/single",
+    name: "SingleSingle1",
     component: SingleSingleView,
     meta: {
       requiresAuth: false

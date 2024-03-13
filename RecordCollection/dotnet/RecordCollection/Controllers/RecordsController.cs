@@ -24,13 +24,22 @@ namespace Capstone.Controllers
             return records;
         }
 
-        [HttpGet("{artist}/{title}")]
+/*        [HttpGet("{artist}/{title}")]
         public ActionResult<Record> GetRecord(string title, string artist, string serial, string releaseYear, string issueYear)
         {
             Record record = recordDao.GetRecord(title, artist, serial, releaseYear, issueYear);
 
             return record;
         }
+*/
+        [HttpGet("Record")]
+        public ActionResult<Record> GetRecord1(string title, string artist, string serial, string releaseYear, string issueYear)
+        {
+            Record record = recordDao.GetRecord(title, artist, serial, releaseYear, issueYear);
+
+            return record;
+        }
+
 
         /*        [HttpGet("{id}")]
                 public ActionResult<Record> GetRecordById(int id)

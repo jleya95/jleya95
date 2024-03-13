@@ -13,7 +13,11 @@ export default {
     getAllRecords() {
         return axios.get('/Records')
     },
-    getSingleRecord(record) {
-        return axios.get(`/Records/${record.artist}/${record.title}?serial=${record.serialNumber}&releaseYear=${record.releaseYear}&issueYear=${record.issueYear}`)
+    // getSingleRecord(record) {
+    //     return axios.get(`/Records/${record.artist}/${record.title}?serial=${record.serialNumber}&releaseYear=${record.releaseYear}&issueYear=${record.issueYear}`)
+    // },
+    getSingleRecord1(record) {
+        return axios.get(`/Records/Record?artist=${record.artist}&title=${record.title}&serial=${record.serialNumber}&releaseYear=${record.releaseYear}&issueYear=${record.issueYear}`)
     }
+
 }

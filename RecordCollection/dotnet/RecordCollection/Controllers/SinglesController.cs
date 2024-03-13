@@ -31,6 +31,14 @@ namespace RecordCollection.Controllers
             return singleEP;
         }
 
+        [HttpGet("Single")]
+        public ActionResult<SingleEP> GetSingle1(string title, string artist, string serial, string releaseYear, string issueYear)
+        {
+            SingleEP singleEP = _singleDao.GetSingle(title, artist, serial, releaseYear, issueYear);
+            return singleEP;
+        }
+
+
         [HttpGet("random")]
         public ActionResult<SingleEP> GetRandomSingle()
         {
