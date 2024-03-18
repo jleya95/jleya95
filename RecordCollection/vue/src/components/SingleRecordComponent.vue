@@ -20,14 +20,14 @@ export default {
     data() {
         return {
             record: [],
-            imgPath: ''
+            imgPath: '/'
         }
     },
     methods: {
         getAlbumArt(record) {
             APIService.searchDiscogsForRecord(record)
                 .then(response => {
-                    this.imgPath = response.data
+                    this.imgPath = this.imgPath + response.data
                 })
         },
         setRecord() {

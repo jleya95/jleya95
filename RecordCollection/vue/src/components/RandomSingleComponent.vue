@@ -20,7 +20,7 @@ export default {
     data() {
         return {
             single: [],
-            imgPath: ''
+            imgPath: '/'
         }
     },
     methods: {
@@ -34,7 +34,7 @@ export default {
         getAlbumArt(single) {
             APIService.searchDiscogsForRecord(single)
                 .then(response => {
-                    this.imgPath = response.data
+                    this.imgPath = this.imgPath + response.data
                 })
         },
         refreshPage() {

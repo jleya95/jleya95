@@ -17,14 +17,14 @@ export default {
     data() {
         return {
             single: [],
-            imgPath: ''
+            imgPath: '/'
         }
     },
     methods: {
         getSingleArt(single) {
             APIService.searchDiscogsForRecord(single)
                 .then(response => {
-                    this.imgPath = response.data
+                    this.imgPath = this.imgPath + response.data
                 })
         },
         setSingle() {
