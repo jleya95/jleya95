@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import HomeComponent from '@/components/HomeComponent.vue';
+import HomeComponent from '../components/HomeComponent.vue';
 
 export default {
   components: {

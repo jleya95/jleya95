@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import RecordsService from '@/services/RecordsService.js'
+import RecordsService from '../services/RecordsService.js'
 import APIService from '../services/APIService'
 
 export default {

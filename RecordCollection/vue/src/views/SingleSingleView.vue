@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import SingleSingleComponent from '@/components/SingleSingleComponent.vue'
+import SingleSingleComponent from '../components/SingleSingleComponent.vue'
 export default {
     components: {
         SingleSingleComponent

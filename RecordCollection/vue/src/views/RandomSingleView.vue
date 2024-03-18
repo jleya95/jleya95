@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import RandomSingleComponent from '@/components/RandomSingleComponent.vue'
+import RandomSingleComponent from '../components/RandomSingleComponent.vue'
 
 export default {
     components: {

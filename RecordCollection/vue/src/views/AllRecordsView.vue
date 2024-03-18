@@ -20,8 +20,8 @@
 </template>
 
 <script>
-import AllRecordsComponent from '@/components/AllRecordsComponent.vue';
-import AllSinglesComponent from '@/components/AllSinglesComponent.vue';
+import AllRecordsComponent from '../components/AllRecordsComponent.vue';
+import AllSinglesComponent from '../components/AllSinglesComponent.vue';
 
 export default {
     components: {

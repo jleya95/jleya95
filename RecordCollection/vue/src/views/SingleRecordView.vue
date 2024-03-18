@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import SingleRecordComponent from '@/components/SingleRecordComponent.vue'
+import SingleRecordComponent from '../components/SingleRecordComponent.vue'
 export default {
     components: {
         SingleRecordComponent

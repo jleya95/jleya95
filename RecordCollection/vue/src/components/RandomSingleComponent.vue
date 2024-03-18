@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import SinglesService from '@/services/SinglesService.js'
+import SinglesService from '../services/SinglesService.js'
 import APIService from '../services/APIService'
 
 export default {
