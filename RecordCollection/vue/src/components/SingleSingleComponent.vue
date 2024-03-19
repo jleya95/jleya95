@@ -17,7 +17,7 @@ export default {
     data() {
         return {
             single: [],
-            imgPath: '/'
+            imgPath: ''
         }
     },
     methods: {
