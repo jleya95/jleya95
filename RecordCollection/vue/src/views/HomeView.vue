@@ -1,5 +1,5 @@
 <template>
-  <h1 class="header">Record Collection</h1>
+  <h1 class="header">Jake's Record Collection</h1>
   <home-component></home-component>
 </template>
 
