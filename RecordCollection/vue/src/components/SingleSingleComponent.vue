@@ -39,8 +39,7 @@ export default {
 </script>
 
 <style>
-.single-single,
-.single-art {
+.single-single {
     margin-left: 4px;
     margin-top: 4px
 }

@@ -21,14 +21,16 @@ export default {
 <style>
 .popup-container {
     /* background-color: rgba(138, 189, 157); */
-    background-color: rgba(255, 255, 255);
+    background-color: gray;
     display: flex;
     flex-direction: column;
     align-items: center;
     align-content: center;
     text-align: center;
     padding: 1%;
-    width: 40%;
-    border-radius: 20px;
+    width: auto;
+    max-width: 20%;
+    border-radius: 15px;
+    border: 1px
 }
 </style>

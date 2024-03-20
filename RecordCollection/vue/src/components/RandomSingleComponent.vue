@@ -57,8 +57,9 @@ export default {
 }
 
 .single-art {
-    margin-left: 4px;
-    margin-top: 4px;
+    /* margin-left: 4px;
+    margin-top: 4px; */
+    margin: 4px;
 }
 
 </style>

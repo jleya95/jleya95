@@ -7,11 +7,19 @@ export default {
     getAllSingles() {
         return axios.get(`https://jakesrecordcollection.azurewebsites.net/Singles`)
     },
-    addSingle(singleData) {
-        return axios.post(`https://jakesrecordcollection.azurewebsites.net/Singles/add?fileAs=${singleData.file}&artist=${singleData.artist}&title=${singleData.title}
-        &releaseYear=${singleData.releaseYear}&recordLabel=${singleData.label}&issueYear=${singleData.issueYear}
-        &serialNumber=${singleData.serialNumber}&pressing=${singleData.pressing}&
-        color=${singleData.color}&notes=${singleData.notes}`)
+    // addSingle(singleData) {
+    //     return axios.post(`https://jakesrecordcollection.azurewebsites.net/Singles/add?fileAs=${singleData.file}&artist=${singleData.artist}&title=${singleData.title}
+    //     &releaseYear=${singleData.releaseYear}&recordLabel=${singleData.label}&issueYear=${singleData.issueYear}
+    //     &serialNumber=${singleData.serialNumber}&pressing=${singleData.pressing}&color=${singleData.color}&notes=${singleData.notes}`)
+    // },
+    addSingle1(singleData) {
+        return axios.post(`https://jakesrecordcollection.azurewebsites.net/Singles/add1?fileAs=${singleData.file}&artist=${singleData.artist}
+        &title=${singleData.title}&releaseYear=${singleData.releaseYear}&recordLabel=${singleData.label}&issueYear=${singleData.issueYear}
+        &serialNumber=${singleData.serialNumber}&pressing=${singleData.pressing}&color=${singleData.color}&notes=${singleData.notes}`, {
+            headers: {
+                "Access-Control-Allow-Origin": "*"
+            }
+        })
     },
     // getSingleSingle(single) {
     //     return axios.get(`/Singles/${single.artist}/${single.title}?serial=${single.serialNumber}&releaseYear=${single.releaseYear}&issueYear=${single.issueYear}`)

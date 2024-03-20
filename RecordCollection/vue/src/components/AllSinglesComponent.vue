@@ -1,5 +1,8 @@
 <template>
-    <div class="list">
+    <div class="loading" v-if="isLoading">
+        <p>Loading singles...</p>
+    </div>
+    <div class="list" v-else>
         <p>--TOTAL: {{ items.length }}--</p>
         <ul class="singles">
             <li class="list-item" v-for="item in items" :key="item" @click="goToSinglePage(item)">{{ item.artist }} |
@@ -19,7 +22,8 @@ import SinglesService from '../services/SinglesService.js';
 export default {
     data() {
         return {
-            items: []
+            items: [],
+            isLoading: true
         }
     },
     methods: {
@@ -29,6 +33,7 @@ export default {
                     if(response.status === 200) {
                         this.$store.commit("GET_LIST_OF_SINGLES", response.data)
                         this.items = this.$store.state.singles
+                        this.isLoading = false
                     }
                 })
         },
