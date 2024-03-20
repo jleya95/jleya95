@@ -3,14 +3,19 @@
         <p>Loading records...</p>
     </div>
     <div class="list" v-else>
+        <p>[TOTAL: {{ items.length }}]</p>
         <ul class="records">
-            <p>--TOTAL: {{ items.length }}--</p>
-            <li class="list-item" v-for="item in items" :key="item" @click="goToRecordPage(item)">{{ item.artist }} |
+            <!-- <li class="list-item" v-for="item in items" :key="item" @click="goToRecordPage(item)">{{ item.artist }} |
                 <span class="record-title">{{ item.title }}</span> |
                 <span id="release" v-if="item.releaseYear != 0">{{ item.releaseYear }}</span> <span v-else>n/a</span> |
                 {{ item.label }} | <span v-if="item.issueYear != 0">{{ item.issueYear }}</span> <span v-else>n/a</span>
                 |
                 {{ item.serialNumber }}
+            </li> -->
+            <li class="list-item" v-for="item in items" :key="item" @click="goToRecordPage(item)">
+                <span class="record-artist">{{ item.artist }}</span> -
+                <span class="record-title">{{ item.title }}</span>
+                <span id="release" v-if="item.releaseYear != 0"> ({{ item.releaseYear }})</span>
             </li>
         </ul>
     </div>
