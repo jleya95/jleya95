@@ -1,6 +1,6 @@
 <template>
     <div class="random-record">
-        <p>{{ record.artist }} | <span class="record-title">{{ record.title }}</span> | {{ record.releaseYear }} | {{
+        <p class="record-info">{{ record.artist }} | <span class="record-title">{{ record.title }}</span> | {{ record.releaseYear }} | {{
             record.label }} <span v-if="record.issueYear != ''">|
                 {{ record.issueYear }}</span> | {{ record.serialNumber }} <span v-if="record.needleInfo != ''">| {{
                     record.needleInfo
@@ -52,6 +52,10 @@ export default {
 <style>
 .record-title {
     font-style: italic;
+}
+
+.record-info {
+    text-wrap: nowrap;
 }
 
 .random-record {

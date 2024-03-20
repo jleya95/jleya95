@@ -1,6 +1,6 @@
 <template>
     <div class="random-single">
-        <p>{{ single.artist }} | <span class="record-title">{{ single.title }}</span> | {{ single.releaseYear }} | {{
+        <p class="record-info">{{ single.artist }} | <span class="record-title">{{ single.title }}</span> | {{ single.releaseYear }} | {{
             single.label }} <span v-if="single.issueYear != ''">|
                 {{ single.issueYear }}</span> | {{ single.serialNumber }}
         </p>

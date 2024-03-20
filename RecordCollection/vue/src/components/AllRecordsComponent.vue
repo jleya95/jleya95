@@ -62,6 +62,7 @@ export default {
 <style>
 .list {
     margin-left: 4px;
+    text-wrap: nowrap;
 }
 
 .list-item:hover {
