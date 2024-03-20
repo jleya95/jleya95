@@ -815,4 +815,22 @@ INSERT INTO records (file_as, artist, title, release_year, record_label, issue_y
 ('ZZ Top', 'ZZ Top', 'Fandango!', 1975, 'London', 1975, 'PS 656', 'Terre Haute', 1, '', '', ''), 
 ('ZZ Top', 'ZZ Top', 'Eliminator', 1983, 'Warner Bros.', 1983, '9 W1 23774-1', 'Pitman', 1, '', '', '')
 
+INSERT INTO singles (file_as, artist, title, release_year, record_label, issue_year, serial_number, pressing, color, notes) VALUES ('Cut Copy', 'Cut Copy', 'Take Me Over', 2010, 'Modular', 2011, 'MODVL133', '45rpm', '', ''), 
+('Dylan, Bob', 'Bob Dylan', 'Duquesne Whistle b/w Meet Me in the Morning', 2012, 'Columbia', 2012, '88765405337', '7", 45rpm', '', ''), 
+('Geto Boys', 'Geto Boys', 'Hot Club Wax', 1993, 'Rap-A-Lot', 1993, 'SPRO 6660', '12": 33rpm', '', 'Till Death Do Us Part sampler'), 
+('Havoc & Prodeje', 'Havoc & Prodeje', 'The Hood Got Me Feelin'' the Pain', 1995, 'MCA', 1995, 'MCA 12-55044', '12"', '', ''), 
+('Ink Spots', 'The Ink Spots', 'The Ink Spots Quartet', 1955, 'Waldorf Music Hall', 1955, 'MH 33-144', '10"; 33rpm', '', ''), 
+('Jaylib', 'Jaylib', 'McNasty Filth', 2004, 'Stones Throw', 2004, 'STH 2088-P', '12"', '', 'Promo; Wrong cover?'), 
+('Jay-Z', 'Jay-Z', 'Excuse Me Miss b/w The Bounce', 2002, 'Roc-A-Fella', 2002, 'DEFR 15794-1', '12"', '', ''), 
+('Kelis', 'Kelis', 'Milkshake (Remix)', 2003, 'Star Trak Entertainment', 2003, ' 82876-59257-1', '12"; Promo', '', ''), 
+('Murderers', 'The Murderers feat. Vita', 'Vita, Vita, Vita b/w S**t Gets Ugly', 2000, 'Murder Inc', 2000, '314 562 661-1', '12"', '', ''), 
+('Mystidious Misfitss', 'Mystidious Misfitss', 'Upside Down (Word Is Born)', 1995, 'Epic', 1995, '46 78069', '12"', '', ''), 
+('Smith, Will', 'Will Smith', 'Will 2K', 1999, 'Columbia', 1999, '44 79287', '12"', '', ''), 
+('Sugarhill Gang', 'Sugarhill Gang', 'Rapper''s Delight', 1979, 'Sugar Hill', 1979, 'SH-542', '12"; Raibo', '', ''), 
+('Talking Heads', 'Talking Heads', 'And She Was', 1985, 'Sire', 1985, 'PRO-A-2348', '12"', '', ''), 
+('Tussle', 'Tussle', 'Don''t Stop b/w Windmill', 2004, 'Troubleman Unlimited', 2004, 'TMU 115', '12"', '', ''), 
+('Vile, Kurt', 'Kurt Vile', 'He''s Alright b/w Farfisas in Falltime / Take Your Time', 2019, 'Matador', 2019, 'OLE-887-7', '7"; 45rpm', 'Purple', 'w/ Childish Prodigy LP'), 
+('Who', 'The Who', 'Summertime Blues b/w Heaven and Hell', 1970, 'Polydor', 2010, '0602527500720', '7"; 45rpm', '', 'w/ Live at Leeds box set')
+
+
 GO
