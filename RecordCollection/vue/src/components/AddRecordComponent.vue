@@ -4,7 +4,7 @@
             <form class="Form" id="AddRecordForm">
                 <div class="form-body">
                     <div class="field">
-                        <label class="add-form-label" for="file-add">File as: </label>
+                        <label class="add-form-label" for="file-add">File As: </label>
                         <input class="add-form-input" type="text" id="file-add" v-model="record.file">
                     </div>
                     <div class="field">
