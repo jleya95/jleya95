@@ -1,15 +1,26 @@
 <template>
-    <div class="random-single">
-        <p class="record-info">{{ single.artist }} | <span class="record-title">{{ single.title }}</span> | {{ single.releaseYear }} | {{
-            single.label }} <span v-if="single.issueYear != ''">|
-                {{ single.issueYear }}</span> | {{ single.serialNumber }}
-        </p>
-        <button @click="refreshPage()">Go Again</button>
+    <div class="loading" v-if="isLoading">
+        <p>Loading single...</p>
+    </div>
+    <div v-else>
+        <div class="random-single">
+            <button @click="refreshPage()">Go Again</button>
+            <p class="record-info"><span class="record-artist">{{ single.artist }}</span> - <span
+                    class="record-title">{{
+        single.title }}</span> ({{ single.releaseYear }})
+            </p>
+        </div>
+
+        <div class="single-art">
+            <img :src="this.imgPath" v-if="imgPath != ''">
+        </div>
+
+        <div class="random-single">
+            <p class="record-info">{{ single.label }} <span v-if="single.issueYear != ''">|
+                    {{ single.issueYear }}</span> | {{ single.serialNumber }}</p>
+        </div>
     </div>
 
-    <div class="single-art">
-        <img :src="this.imgPath" v-if="imgPath != ''">
-    </div>
 </template>
 
 <script>
@@ -20,7 +31,8 @@ export default {
     data() {
         return {
             single: [],
-            imgPath: ''
+            imgPath: '',
+            isLoading: true
         }
     },
     methods: {
@@ -29,6 +41,7 @@ export default {
                 .then(response => {
                     this.single = response.data
                     this.getAlbumArt(this.single)
+                    this.isLoading = false
                 })
         },
         getAlbumArt(single) {
@@ -61,5 +74,4 @@ export default {
     margin-top: 4px; */
     margin: 4px;
 }
-
 </style>

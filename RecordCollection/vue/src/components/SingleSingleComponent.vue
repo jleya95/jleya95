@@ -1,12 +1,15 @@
 <template>
     <div class="single-single">
-        <p class="record-info">{{ single.artist }} | <span class="record-title">{{ single.title }}</span> | {{ single.releaseYear }} | {{
-            single.label }} <span v-if="single.issueYear != ''">|
-                {{ single.issueYear }}</span> | {{ single.serialNumber }}
+        <p class="record-info"><span class="record-artist">{{ single.artist }}</span> - <span class="record-title">{{
+            single.title }}</span> ({{ single.releaseYear }})
         </p>
     </div>
     <div class="single-art">
         <img :src="this.imgPath" v-if="imgPath != ''">
+    </div>
+    <div class="single-single">
+        <p class="record-info">{{ single.label }} <span v-if="single.issueYear != ''">|
+                {{ single.issueYear }}</span> | {{ single.serialNumber }}</p>
     </div>
 </template>
 

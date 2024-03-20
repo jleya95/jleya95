@@ -51,12 +51,19 @@
                         <label class="add-form-label" for="needle-add">Needle Info: </label>
                         <input class="add-form-input" type="text" id="needle-add" v-model="record.needleInfo">
                     </div>
+                    <div class="field">
+                        <label for="code-add" class="add-form-label">Access Code: </label>
+                        <input type="text" id="code-add" class="add-form-input" v-model="code">
+                    </div>
                     <button class="add-button" @click="addRecord">Add</button>
                 </div>
             </form>
         </div>
         <div class="popup" v-if="showPopUp">
             <add-record-pop-up-component></add-record-pop-up-component>
+        </div>
+        <div class="code-error" v-if="codeError">
+            <p>Wrong code!</p>
         </div>
     </div>
 </template>
@@ -86,21 +93,28 @@ export default {
                 notes: "",
                 needleInfo: ""
             },
+            code: "",
+            codeError: false,
             showPopUp: false,
         }
     },
     methods: {
         addRecord(e) {
             e.preventDefault();
-            RecordsService.addRecord(this.record)
+            if (this.code === '0905') {
+                RecordsService.addRecord(this.record)
                 .then((response) => {
                     if (response.status === 200) {
                         this.showPopUp = true
-                    }
-                })
-                .catch((error) => {
-                    this.handleErrorResponse(error, "Record not added")
-                })
+                        // this.codeError = false
+                        }
+                    })
+                    .catch((error) => {
+                        this.handleErrorResponse(error, "Record not added")
+                    })
+            } else {
+                this.codeError = true
+            }
 
         },
         handleErrorResponse(error, verb) {
@@ -151,7 +165,7 @@ export default {
     flex-direction: row;
 }
 
-.add-form {
+.add-form, .code-error {
     margin-left: 4px;
 }
 

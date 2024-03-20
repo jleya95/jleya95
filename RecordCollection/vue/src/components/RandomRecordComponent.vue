@@ -1,17 +1,27 @@
 <template>
-    <div class="random-record">
-        <p class="record-info">{{ record.artist }} | <span class="record-title">{{ record.title }}</span> | {{ record.releaseYear }} | {{
-            record.label }} <span v-if="record.issueYear != ''">|
-                {{ record.issueYear }}</span> | {{ record.serialNumber }} <span v-if="record.needleInfo != ''">| {{
-                    record.needleInfo
-                }}</span>
-        </p>
-        <button @click="refreshPage()">Go Again</button>
+    <div class="loading" v-if="isLoading">
+        <p>Loading record...</p>
+    </div>
+    <div v-else>
+        <div class="random-record">
+            <button @click="refreshPage()">Go Again</button>
+            <p class="record-info"><span class="record-artist">{{ record.artist }}</span> - <span
+                    class="record-title">{{
+        record.title }}</span> ({{ record.releaseYear }})
+            </p>
+        </div>
+        <div class="album-art">
+            <img :src="this.imgPath" v-if="imgPath != ''">
+        </div>
+        <div class="random-record">
+            <p class="record-info">
+                {{ record.label }} <span v-if="record.issueYear != ''">|
+                    {{ record.issueYear }}</span> | {{ record.serialNumber }}
+                <span v-if="record.needleInfo != ''">| {{ record.needleInfo }}</span>
+            </p>
+        </div>
     </div>
 
-    <div class="album-art">
-        <img :src="this.imgPath" v-if="imgPath != ''">
-    </div>
 </template>
 
 <script>
@@ -22,7 +32,8 @@ export default {
     data() {
         return {
             record: [],
-            imgPath: ''
+            imgPath: '',
+            isLoading: true
         }
     },
     methods: {
@@ -31,6 +42,7 @@ export default {
                 .then(response => {
                     this.record = response.data
                     this.getAlbumArt(this.record)
+                    this.isLoading = false
                 })
         },
         getAlbumArt(record) {
@@ -52,6 +64,10 @@ export default {
 <style>
 .record-title {
     font-style: italic;
+}
+
+.record-artist {
+    font-weight: bold;
 }
 
 .record-info {
