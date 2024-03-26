@@ -65,7 +65,7 @@ export default {
 </script>
 
 <style>
-.list {
+.list, .loading {
     margin-left: 4px;
     text-wrap: nowrap;
 }
