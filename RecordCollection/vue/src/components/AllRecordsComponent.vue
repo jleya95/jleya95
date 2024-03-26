@@ -72,7 +72,7 @@ export default {
 }
 
 .list-item {
-    width: 150%;
+    width: 200%;
 }
 
 .list-item:hover {
