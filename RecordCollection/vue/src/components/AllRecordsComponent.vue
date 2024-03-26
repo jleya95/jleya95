@@ -68,6 +68,11 @@ export default {
 .list, .loading {
     margin-left: 4px;
     text-wrap: nowrap;
+    /* width: 10px; */
+}
+
+.list-item {
+    width: 150%;
 }
 
 .list-item:hover {
