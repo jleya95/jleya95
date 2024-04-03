@@ -70,8 +70,8 @@ namespace Capstone
                 s.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = Configuration["APIVersion"],
-                    Title = "Final Capstone API",
-                    Description = "For the final capstone"
+                    Title = "agent_j website API",
+                    Description = "For agent_j's website"
                 });
             });
 
