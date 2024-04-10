@@ -102,6 +102,9 @@ export default {
         addRecord(e) {
             e.preventDefault();
             if (this.code === '0905') {
+                // if (this.record.file.contains('&')){
+                //     this.record.file = this.record.file.replace('&', '%26')
+                // }
                 RecordsService.addRecord(this.record)
                 .then((response) => {
                     if (response.status === 200) {

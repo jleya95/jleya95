@@ -10,6 +10,12 @@ export default {
         &serialNumber=${recordData.serialNumber}&pressing=${recordData.pressing}&discNumber=${recordData.discNumber}
         &color=${recordData.color}&notes=${recordData.notes}&needleInfo=${recordData.needleInfo}`)
     },
+    // addRecord(recordData) {
+    //     return axios.post(`/Records/add?fileAs=${recordData.file}&artist=${recordData.artist}&title=${recordData.title}
+    //     &releaseYear=${recordData.releaseYear}&recordLabel=${recordData.label}&issueYear=${recordData.issueYear}
+    //     &serialNumber=${recordData.serialNumber}&pressing=${recordData.pressing}&discNumber=${recordData.discNumber}
+    //     &color=${recordData.color}&notes=${recordData.notes}&needleInfo=${recordData.needleInfo}`)
+    // },
     getAllRecords() {
         return axios.get('https://jakesrecordcollection.azurewebsites.net/Records')
     },
