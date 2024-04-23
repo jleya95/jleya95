@@ -43,11 +43,18 @@
                         <label class="add-form-label" for="notes-add">Notes: </label>
                         <textarea class="add-form-input" id="notes-add" v-model="single.notes"></textarea>
                     </div>
+                    <div class="field">
+                        <label for="code-add" class="add-form-label">Access Code: </label>
+                        <input type="text" id="code-add" class="add-form-input" v-model="code">
+                    </div>
                     <button class="add-button" @click="addSingle">Add</button>
                 </div>
             </form>
             <div class="popup" v-if="showPopUp">
                 <add-record-pop-up-component></add-record-pop-up-component>
+            </div>
+            <div class="code-error" v-if="codeError">
+                <p>Wrong code!</p>
             </div>
         </div>
     </div>
@@ -76,22 +83,27 @@ export default {
                 color: "",
                 notes: "",
             },
+            code: "",
+            codeError: false,
             showPopUp: false,
         }
     },
     methods: {
         addSingle(e) {
             e.preventDefault();
-            SinglesService.addSingle1(this.single)
-                .then((response) => {
-                    if (response.status === 200) {
-                        this.showPopUp = true
-                    }
-                })
-                .catch((error) => {
-                    this.handleErrorResponse(error, "Record not added")
-                })
-
+            if (this.code === '0905') {
+                SinglesService.addSingle(this.single)
+                    .then((response) => {
+                        if (response.status === 200) {
+                            this.showPopUp = true
+                        }
+                    })
+                    .catch((error) => {
+                        this.handleErrorResponse(error, "Record not added")
+                    })
+            } else {
+                this.codeError = true;
+            }
         },
         handleErrorResponse(error, verb) {
             if (error.response) {
