@@ -14,3 +14,10 @@ components: {
 }
 }
 </script>
+
+<style>
+#record-app {
+  background-color: black;
+  color: gray
+}
+</style>

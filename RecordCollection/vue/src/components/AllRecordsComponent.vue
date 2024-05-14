@@ -76,6 +76,7 @@ export default {
 }
 
 .list-item:hover {
-    background-color: lightgray
+    background-color: gray;
+    color: black
 }
 </style>

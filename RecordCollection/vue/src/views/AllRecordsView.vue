@@ -45,4 +45,7 @@ export default {
 .button2 {
     margin-left: 4px;
 }
+/* .button1, .button2 {
+    background-color: lightslategray;
+} */
 </style>

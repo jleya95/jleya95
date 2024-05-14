@@ -184,7 +184,8 @@ export default {
 
 .add-form-input {
     width: auto;
-    max-width: 20%
+    max-width: 20%;
+    background-color: lightslategrey;
 }
 
 .add-form-label {

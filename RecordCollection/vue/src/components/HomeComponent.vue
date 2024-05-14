@@ -38,4 +38,8 @@ export default {
 .home-button {
   margin-right: 4px
 }
+
+button {
+  background-color: darkgrey;
+}
 </style>
