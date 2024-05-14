@@ -102,14 +102,13 @@ export default {
         addRecord(e) {
             e.preventDefault();
             if (this.code === '0905') {
-                // if (this.record.file.contains('&')){
-                //     this.record.file = this.record.file.replace('&', '%26')
-                // }
+                this.removeAmpersands(this.record);
                 RecordsService.addRecord(this.record)
                 .then((response) => {
                     if (response.status === 200) {
+                        this.codeError = false;
+                        this.clearForm();
                         this.showPopUp = true
-                        // this.codeError = false
                         }
                     })
                     .catch((error) => {
@@ -131,7 +130,36 @@ export default {
                 console.log(`Error ${verb} topic. Request could not be created.`);
             }
         },
-
+        removeAmpersands(record) {
+            if (record.file.includes('&')){
+                record.file = record.file.replace('&', '%26')
+            }
+            if (record.artist.includes('&')){
+                record.artist = record.artist.replace('&', '%26')
+            }
+            if (record.title.includes('&')){
+                record.title = record.title.replace('&', '%26')
+            }
+            if (record.label.includes('&')){
+                record.label = record.label.replace('&', '%26')
+            }
+            return record;
+        },
+        clearForm(){
+            this.record.file = '';
+            this.record.artist = '';
+            this.record.title = '';
+            this.record.releaseYear = '';
+            this.record.label = '';
+            this.record.issueYear = '';
+            this.record.serialNumber = '';
+            this.record.pressing = '';
+            this.record.discNumber = '';
+            this.record.color = '';
+            this.record.notes = '';
+            this.record.needleInfo = '';
+            this.code = '';
+        }
     }
 }
 </script>
