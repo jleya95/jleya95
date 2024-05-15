@@ -17,7 +17,6 @@ components: {
 
 <style>
 #record-app {
-  background-color: black;
-  color: gray
+  color: lightgrey
 }
 </style>
